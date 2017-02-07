@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.etiantian.dao.mappers.TolQuestionSupplementInfoMapper">
+  <resultMap id="BaseResultMap" type="com.etiantian.entity.TolQuestionSupplementInfo">
+    <id column="REF" jdbcType="DECIMAL" property="ref" />
+    <result column="QUESTION_ID" jdbcType="DECIMAL" property="questionId" />
+    <result column="DIFFICULT" jdbcType="DECIMAL" property="difficult" />
+    <result column="STANDARD_TIME" jdbcType="DECIMAL" property="standardTime" />
+    <result column="C_TIME" jdbcType="DATE" property="cTime" />
+    <result column="M_TIME" jdbcType="DATE" property="mTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    REF, QUESTION_ID, DIFFICULT, STANDARD_TIME, C_TIME, M_TIME
+  </sql>
+  <select id="selectByExample" parameterType="com.etiantian.entity.TolQuestionSupplementInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TOL_QUESTION_SUPPLEMENT_INFO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TOL_QUESTION_SUPPLEMENT_INFO
+    where REF = #{ref,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+    delete from TOL_QUESTION_SUPPLEMENT_INFO
+    where REF = #{ref,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.etiantian.entity.TolQuestionSupplementInfoExample">
+    delete from TOL_QUESTION_SUPPLEMENT_INFO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.etiantian.entity.TolQuestionSupplementInfo">
+    insert into TOL_QUESTION_SUPPLEMENT_INFO (REF, QUESTION_ID, DIFFICULT, 
+      STANDARD_TIME, C_TIME, M_TIME
+      )
+    values (#{ref,jdbcType=DECIMAL}, #{questionId,jdbcType=DECIMAL}, #{difficult,jdbcType=DECIMAL}, 
+      #{standardTime,jdbcType=DECIMAL}, #{cTime,jdbcType=DATE}, #{mTime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.etiantian.entity.TolQuestionSupplementInfo">
+    insert into TOL_QUESTION_SUPPLEMENT_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+        REF,
+      <if test="questionId != null">
+        QUESTION_ID,
+      </if>
+      <if test="difficult != null">
+        DIFFICULT,
+      </if>
+      <if test="standardTime != null">
+        STANDARD_TIME,
+      </if>
+      <if test="cTime != null">
+        C_TIME,
+      </if>
+      <if test="mTime != null">
+        M_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+        seq_all_ref.nextval,
+      <if test="questionId != null">
+        #{questionId,jdbcType=DECIMAL},
+      </if>
+      <if test="difficult != null">
+        #{difficult,jdbcType=DECIMAL},
+      </if>
+      <if test="standardTime != null">
+        #{standardTime,jdbcType=DECIMAL},
+      </if>
+      <if test="cTime != null">
+        #{cTime,jdbcType=DATE},
+      </if>
+      <if test="mTime != null">
+        #{mTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.etiantian.entity.TolQuestionSupplementInfoExample" resultType="java.lang.Integer">
+    select count(*) from TOL_QUESTION_SUPPLEMENT_INFO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update TOL_QUESTION_SUPPLEMENT_INFO
+    <set>
+      <if test="record.ref != null">
+        REF = #{record.ref,jdbcType=DECIMAL},
+      </if>
+      <if test="record.questionId != null">
+        QUESTION_ID = #{record.questionId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.difficult != null">
+        DIFFICULT = #{record.difficult,jdbcType=DECIMAL},
+      </if>
+      <if test="record.standardTime != null">
+        STANDARD_TIME = #{record.standardTime,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cTime != null">
+        C_TIME = #{record.cTime,jdbcType=DATE},
+      </if>
+      <if test="record.mTime != null">
+        M_TIME = #{record.mTime,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update TOL_QUESTION_SUPPLEMENT_INFO
+    set REF = #{record.ref,jdbcType=DECIMAL},
+      QUESTION_ID = #{record.questionId,jdbcType=DECIMAL},
+      DIFFICULT = #{record.difficult,jdbcType=DECIMAL},
+      STANDARD_TIME = #{record.standardTime,jdbcType=DECIMAL},
+      C_TIME = #{record.cTime,jdbcType=DATE},
+      M_TIME = #{record.mTime,jdbcType=DATE}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.etiantian.entity.TolQuestionSupplementInfo">
+    update TOL_QUESTION_SUPPLEMENT_INFO
+    <set>
+      <if test="questionId != null">
+        QUESTION_ID = #{questionId,jdbcType=DECIMAL},
+      </if>
+      <if test="difficult != null">
+        DIFFICULT = #{difficult,jdbcType=DECIMAL},
+      </if>
+      <if test="standardTime != null">
+        STANDARD_TIME = #{standardTime,jdbcType=DECIMAL},
+      </if>
+      <if test="cTime != null">
+        C_TIME = #{cTime,jdbcType=DATE},
+      </if>
+      <if test="mTime != null">
+        M_TIME = #{mTime,jdbcType=DATE},
+      </if>
+    </set>
+    where REF = #{ref,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.etiantian.entity.TolQuestionSupplementInfo">
+    update TOL_QUESTION_SUPPLEMENT_INFO
+    set QUESTION_ID = #{questionId,jdbcType=DECIMAL},
+      DIFFICULT = #{difficult,jdbcType=DECIMAL},
+      STANDARD_TIME = #{standardTime,jdbcType=DECIMAL},
+      C_TIME = #{cTime,jdbcType=DATE},
+      M_TIME = #{mTime,jdbcType=DATE}
+    where REF = #{ref,jdbcType=DECIMAL}
+  </update>
+</mapper>
