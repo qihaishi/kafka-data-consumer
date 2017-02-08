@@ -5,6 +5,7 @@ import com.etiantian.PooledKafka;
 import com.etiantian.service.ServiceFacade;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ import java.util.Properties;
  */
 @Component
 public class KafkaConsumer {
+    private static Logger logger = Logger.getLogger(KafkaConsumer.class);
+
     @Autowired
     ServiceFacade serviceFacade;
 
@@ -41,7 +44,7 @@ public class KafkaConsumer {
                 Iterator<ConsumerRecord> it = consumerRecords.iterator();
                 while(it.hasNext()) {
                     ConsumerRecord record = it.next();
-                    System.out.println(record.topic()+ "    " + record.value());
+                    logger.info(record.topic()+ "    " + record.value());
                     try {
                         serviceFacade.doService(record.topic().toString(), new JSONObject(record.value().toString()));
                     } catch (JSONException e) {
