@@ -5,6 +5,7 @@ import com.etiantian.PooledKafka;
 import com.etiantian.service.ServiceFacade;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -41,7 +42,11 @@ public class KafkaConsumer {
                 while(it.hasNext()) {
                     ConsumerRecord record = it.next();
                     System.out.println(record.topic()+ "    " + record.value());
-                    serviceFacade.doService(record.topic().toString(), new JSONObject(record.value().toString()));
+                    try {
+                        serviceFacade.doService(record.topic().toString(), new JSONObject(record.value().toString()));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
 
             }

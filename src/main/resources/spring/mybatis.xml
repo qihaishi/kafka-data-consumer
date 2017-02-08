@@ -42,6 +42,6 @@
     </tx:advice>
     <aop:aspectj-autoproxy/>
     <aop:config>
-        <aop:advisor advice-ref="transactionAdvice" pointcut="execution(* com.etiantian.service.*Service.*(..))"/>
+        <aop:advisor advice-ref="transactionAdvice" pointcut="execution(* com.etiantian.service.*.*(..))"/>
     </aop:config>
 </beans>

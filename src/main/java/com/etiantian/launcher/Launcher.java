@@ -2,6 +2,7 @@ package com.etiantian.launcher;
 
 import com.etiantian.service.ServiceFacade;
 import org.json.JSONObject;
+import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.io.IOException;
@@ -17,5 +18,7 @@ public class Launcher {
 
         KafkaConsumer kafkaConsumer = SpringContext.getBean("kafkaConsumer", KafkaConsumer.class);
         kafkaConsumer.execute();
+
+        SpringApplication.run(Launcher.class, args);
     }
 }
