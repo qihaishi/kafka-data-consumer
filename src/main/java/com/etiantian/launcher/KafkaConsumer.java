@@ -50,6 +50,6 @@ public class KafkaConsumer {
                 }
 
             }
-        },"kafka-readback", Arrays.asList(properties.getProperty("topic.list").split(",")),2000l );
+        },"kafka-readback", Arrays.asList(properties.getProperty("topic.list").split(",")),1000l );
     }
 }
