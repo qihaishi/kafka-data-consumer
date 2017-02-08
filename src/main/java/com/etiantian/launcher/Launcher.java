@@ -1,10 +1,8 @@
 package com.etiantian.launcher;
 
-import com.etiantian.service.ServiceFacade;
+import com.etiantian.kafka.KafkaConsumer;
 import org.apache.log4j.PropertyConfigurator;
-import org.json.JSONObject;
 import org.springframework.boot.SpringApplication;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 
