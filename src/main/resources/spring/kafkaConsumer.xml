@@ -50,7 +50,7 @@
         <constructor-arg>
             <array>
                 <value>tol_newpaper_dir_association</value>
-                <value>tol_question_supplement_info</value>
+                <value>tol_newpaper_publish_time</value>
             </array>
         </constructor-arg>
     </bean>
