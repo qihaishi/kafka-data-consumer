@@ -1,6 +1,5 @@
 package com.etiantian.launcher;
 
-import com.etiantian.kafka.KafkaConsumer;
 import org.apache.log4j.PropertyConfigurator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

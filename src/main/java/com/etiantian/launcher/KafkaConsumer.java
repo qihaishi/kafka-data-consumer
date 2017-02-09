@@ -1,4 +1,4 @@
-package com.etiantian.kafka;
+package com.etiantian.launcher;
 
 import com.etiantian.service.ServiceFacade;
 import org.apache.log4j.Logger;
@@ -36,7 +36,7 @@ public class KafkaConsumer {
                 try {
                     serviceFacade.doService(topic, new JSONObject(value));
                 } catch (JSONException e) {
-                    logger.error("doService error!!\n",e);
+                    logger.error("Message format error!! "+ received+ "\n",e);
                 }
             }
         }
