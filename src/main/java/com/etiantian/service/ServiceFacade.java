@@ -123,7 +123,7 @@ public class ServiceFacade {
         while(it.hasNext()) {
             String key = it.next();
             Object value = queryJson.get(key);
-            String methodName = "and" + toFirstUpperCase(key) + "EqualTo";
+            String methodName = "and" + toFirstUpperCase(underlineToCamel(key)) + "EqualTo";
             callMethod(criteria, methodName, value);
         }
 
