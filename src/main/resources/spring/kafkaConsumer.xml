@@ -51,6 +51,7 @@
             <array>
                 <value>tol_newpaper_dir_association</value>
                 <value>tol_question_supplement_info</value>
+                <value>recommend_resource_weight</value>
             </array>
         </constructor-arg>
     </bean>
