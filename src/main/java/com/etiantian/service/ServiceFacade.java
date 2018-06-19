@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
 import java.util.Iterator;
 
 /**
@@ -107,8 +108,11 @@ public class ServiceFacade {
             String methodName = "set" + toFirstUpperCase(underlineToCamel(key));
             if (key.equals(C_TIME)) {
                 methodName = "set" + underlineToCamel(key);
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                callMethod(t, methodName, sdf.parse(value.toString()));
+            }else{
+                callMethod(t, methodName, value);
             }
-            callMethod(t, methodName, value);
         }
     }
 
