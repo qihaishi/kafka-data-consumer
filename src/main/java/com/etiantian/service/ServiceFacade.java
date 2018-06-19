@@ -15,6 +15,7 @@ import java.util.Iterator;
  */
 @Service
 public class ServiceFacade {
+    public static final String C_TIME = "cTime";
     private static Logger logger = Logger.getLogger(ServiceFacade.class);
     public static final char UNDERLINE = '_';
 
@@ -86,6 +87,7 @@ public class ServiceFacade {
         return str.replaceFirst(str.substring(0,1),str.substring(0,1).toUpperCase());
     }
 
+
     /**
      *  根据约定的规则设置设置参数
      *  {
@@ -136,7 +138,9 @@ public class ServiceFacade {
             String key = it.next();
             Object value = json.get(key);
             String methodName = "set"+toFirstUpperCase(underlineToCamel(key));
-
+            if(key.equals(C_TIME)){
+                methodName = "set"+underlineToCamel(key);
+            }
             callMethod(t, methodName, value);
         }
     }
