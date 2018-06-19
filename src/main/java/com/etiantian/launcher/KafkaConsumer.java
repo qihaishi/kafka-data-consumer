@@ -27,7 +27,7 @@ public class KafkaConsumer {
     PollableChannel channel;
     public void execute() throws IOException {
         while (true) {
-            Message<?> received = channel.receive(1000l);
+            Message<?> received = channel.receive(1000L);
             if(received != null) {
                 KafkaMessageHeaders headers = (KafkaMessageHeaders) received.getHeaders();
                 Map<String, Object> map = headers.getRawHeaders();

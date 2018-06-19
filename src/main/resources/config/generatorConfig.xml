@@ -12,9 +12,11 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <!--数据库连接 -->
-        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+        <!--<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
                         connectionURL="jdbc:oracle:thin:@192.168.10.27:1521:ettdb" userId="ett16061"
-                        password="ett16061"/>
+                        password="ett16061"/>-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.11.203:3306/oragbk"
+                        userId="schu" password="test40"></jdbcConnection>
         <!--默认false
            Java type resolver will always use java.math.BigDecimal if the database column is of type DECIMAL or NUMERIC.
          -->
@@ -46,6 +48,7 @@
 
         <!--<table tableName="TOL_NEWPAPER_DIR_ASSOCIATION"></table>-->
         <!--<table tableName="recommend_resource_weight"></table>-->
-        <table tableName="xxx"></table>
+        <!--<table tableName="version_info" domainObjectName="VersionInfo"></table>-->
+        <table tableName="version_info_del" domainObjectName="VersionInfoDel"></table>
     </context>
 </generatorConfiguration>

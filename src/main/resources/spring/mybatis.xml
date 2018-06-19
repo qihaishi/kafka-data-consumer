@@ -5,18 +5,18 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="driverClassName" value="${oracle.driverClassName}"/>
-        <property name="url" value="${oracle.url}"/>
-        <property name="username" value="${oracle.username}"/>
-        <property name="password" value="${oracle.password}"/>
-        <property name="maxActive" value="${oracle.maxActive}"/>
-        <property name="minIdle" value="${oracle.minIdle}"/>
-        <property name="maxWait" value="${oracle.maxWait}"/>
-        <property name="initialSize" value="${oracle.initialSize}"/>
-        <property name="removeAbandoned" value="${oracle.removeAbandoned}"/>
-        <property name="removeAbandonedTimeout" value="${oracle.removeAbandonedTimeout}"/>
-        <property name="validationQuery" value="${oracle.validationQuery}"/>
-        <property name="testOnBorrow" value="${oracle.testOnBorrow}"/>
+        <property name="driverClassName" value="${mysql.driverClassName}"/>
+        <property name="url" value="${mysql.url}"/>
+        <property name="username" value="${mysql.username}"/>
+        <property name="password" value="${mysql.password}"/>
+        <property name="maxActive" value="${mysql.maxActive}"/>
+        <property name="minIdle" value="${mysql.minIdle}"/>
+        <property name="maxWait" value="${mysql.maxWait}"/>
+        <property name="initialSize" value="${mysql.initialSize}"/>
+        <property name="removeAbandoned" value="${mysql.removeAbandoned}"/>
+        <property name="removeAbandonedTimeout" value="${mysql.removeAbandonedTimeout}"/>
+        <property name="validationQuery" value="${mysql.validationQuery}"/>
+        <property name="testOnBorrow" value="${mysql.testOnBorrow}"/>
     </bean>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
