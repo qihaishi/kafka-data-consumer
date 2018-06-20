@@ -18,6 +18,7 @@ import java.util.Iterator;
 public class ServiceFacade {
     public static final String C_TIME = "cTime";
     public static final char UNDERLINE = '_';
+    public static final String GGS_TIME = "ggsTime";
     private static Logger logger = Logger.getLogger(ServiceFacade.class);
 
     /**
@@ -105,14 +106,8 @@ public class ServiceFacade {
         while (it.hasNext()) {
             String key = it.next();
             Object value = json.get(key);
-            String methodName = "set" + toFirstUpperCase(underlineToCamel(key));
-            if (key.equals(C_TIME)) {
-                methodName = "set" + underlineToCamel(key);
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                callMethod(t, methodName, sdf.parse(value.toString()));
-            }else{
-                callMethod(t, methodName, value);
-            }
+
+            timeOperate(t, key, value);
         }
     }
 
@@ -138,14 +133,27 @@ public class ServiceFacade {
                         params[index] = param;
                         index++;
                     }
-                    logger.warn("params:" + params.toString());
-
                     rtn = method.invoke(t, params);
                     break;
                 }
             }
         }
         return rtn;
+    }
+
+    static <T> void timeOperate(T t, String key, Object value) throws Exception {
+        String methodName = "set" + toFirstUpperCase(underlineToCamel(key));
+        boolean bool1 = key.equals(C_TIME);
+        boolean bool2 = key.equals(GGS_TIME);
+        if (bool1 || bool2) {
+            if(bool1){
+                methodName = "set" + underlineToCamel(key);
+            }
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            callMethod(t, methodName, sdf.parse(value.toString()));
+        } else {
+            callMethod(t, methodName, value);
+        }
     }
 
     public void doService(String topicName, JSONObject json) {
