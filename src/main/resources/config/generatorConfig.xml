@@ -48,7 +48,12 @@
 
         <!--<table tableName="TOL_NEWPAPER_DIR_ASSOCIATION"></table>-->
         <!--<table tableName="recommend_resource_weight"></table>-->
-        <!--<table tableName="version_info" domainObjectName="VersionInfo"></table>-->
+        <!--<table tableName="version_info" domainObjectName="VersionInfo"></table>
         <table tableName="version_info_del" domainObjectName="VersionInfoDel"></table>
+
+        <table tableName="node_info" domainObjectName="NodeInfo"></table>
+        <table tableName="node_info_del" domainObjectName="NodeInfoDel"></table>
+
+        -->
     </context>
 </generatorConfiguration>

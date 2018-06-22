@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.etiantian.dao.mappers.NodeInfoMapper">
+  <resultMap id="BaseResultMap" type="com.etiantian.entity.NodeInfo">
+    <id column="ref" jdbcType="BIGINT" property="ref" />
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="grade_id" jdbcType="INTEGER" property="gradeId" />
+    <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
+    <result column="c_time" jdbcType="TIMESTAMP" property="cTime" />
+    <result column="m_time" jdbcType="TIMESTAMP" property="mTime" />
+    <result column="c_user_id" jdbcType="BIGINT" property="cUserId" />
+    <result column="m_user_id" jdbcType="BIGINT" property="mUserId" />
+    <result column="enable" jdbcType="INTEGER" property="enable" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="root_id" jdbcType="BIGINT" property="rootId" />
+    <result column="route_id" jdbcType="VARCHAR" property="routeId" />
+    <result column="route_name" jdbcType="VARCHAR" property="routeName" />
+    <result column="ggs_time" jdbcType="TIMESTAMP" property="ggsTime" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ref, id, name, grade_id, subject_id, c_time, m_time, c_user_id, m_user_id, enable, 
+    parent_id, root_id, route_id, route_name, ggs_time, level
+  </sql>
+  <select id="selectByExample" parameterType="com.etiantian.entity.NodeInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from node_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from node_info
+    where ref = #{ref,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from node_info
+    where ref = #{ref,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.etiantian.entity.NodeInfoExample">
+    delete from node_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.etiantian.entity.NodeInfo">
+    insert into node_info (ref, id, name, 
+      grade_id, subject_id, c_time, 
+      m_time, c_user_id, m_user_id, 
+      enable, parent_id, root_id, 
+      route_id, route_name, ggs_time, 
+      level)
+    values (#{ref,jdbcType=BIGINT}, #{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{gradeId,jdbcType=INTEGER}, #{subjectId,jdbcType=INTEGER}, #{cTime,jdbcType=TIMESTAMP}, 
+      #{mTime,jdbcType=TIMESTAMP}, #{cUserId,jdbcType=BIGINT}, #{mUserId,jdbcType=BIGINT}, 
+      #{enable,jdbcType=INTEGER}, #{parentId,jdbcType=BIGINT}, #{rootId,jdbcType=BIGINT}, 
+      #{routeId,jdbcType=VARCHAR}, #{routeName,jdbcType=VARCHAR}, #{ggsTime,jdbcType=TIMESTAMP}, 
+      #{level,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.etiantian.entity.NodeInfo">
+    insert into node_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ref != null">
+        ref,
+      </if>
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="gradeId != null">
+        grade_id,
+      </if>
+      <if test="subjectId != null">
+        subject_id,
+      </if>
+      <if test="cTime != null">
+        c_time,
+      </if>
+      <if test="mTime != null">
+        m_time,
+      </if>
+      <if test="cUserId != null">
+        c_user_id,
+      </if>
+      <if test="mUserId != null">
+        m_user_id,
+      </if>
+      <if test="enable != null">
+        enable,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="rootId != null">
+        root_id,
+      </if>
+      <if test="routeId != null">
+        route_id,
+      </if>
+      <if test="routeName != null">
+        route_name,
+      </if>
+      <if test="ggsTime != null">
+        ggs_time,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ref != null">
+        #{ref,jdbcType=BIGINT},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gradeId != null">
+        #{gradeId,jdbcType=INTEGER},
+      </if>
+      <if test="subjectId != null">
+        #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="cTime != null">
+        #{cTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mTime != null">
+        #{mTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cUserId != null">
+        #{cUserId,jdbcType=BIGINT},
+      </if>
+      <if test="mUserId != null">
+        #{mUserId,jdbcType=BIGINT},
+      </if>
+      <if test="enable != null">
+        #{enable,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="rootId != null">
+        #{rootId,jdbcType=BIGINT},
+      </if>
+      <if test="routeId != null">
+        #{routeId,jdbcType=VARCHAR},
+      </if>
+      <if test="routeName != null">
+        #{routeName,jdbcType=VARCHAR},
+      </if>
+      <if test="ggsTime != null">
+        #{ggsTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.etiantian.entity.NodeInfoExample" resultType="java.lang.Integer">
+    select count(*) from node_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update node_info
+    <set>
+      <if test="record.ref != null">
+        ref = #{record.ref,jdbcType=BIGINT},
+      </if>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gradeId != null">
+        grade_id = #{record.gradeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.subjectId != null">
+        subject_id = #{record.subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cTime != null">
+        c_time = #{record.cTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mTime != null">
+        m_time = #{record.mTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cUserId != null">
+        c_user_id = #{record.cUserId,jdbcType=BIGINT},
+      </if>
+      <if test="record.mUserId != null">
+        m_user_id = #{record.mUserId,jdbcType=BIGINT},
+      </if>
+      <if test="record.enable != null">
+        enable = #{record.enable,jdbcType=INTEGER},
+      </if>
+      <if test="record.parentId != null">
+        parent_id = #{record.parentId,jdbcType=BIGINT},
+      </if>
+      <if test="record.rootId != null">
+        root_id = #{record.rootId,jdbcType=BIGINT},
+      </if>
+      <if test="record.routeId != null">
+        route_id = #{record.routeId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.routeName != null">
+        route_name = #{record.routeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ggsTime != null">
+        ggs_time = #{record.ggsTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.level != null">
+        level = #{record.level,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update node_info
+    set ref = #{record.ref,jdbcType=BIGINT},
+      id = #{record.id,jdbcType=BIGINT},
+      name = #{record.name,jdbcType=VARCHAR},
+      grade_id = #{record.gradeId,jdbcType=INTEGER},
+      subject_id = #{record.subjectId,jdbcType=INTEGER},
+      c_time = #{record.cTime,jdbcType=TIMESTAMP},
+      m_time = #{record.mTime,jdbcType=TIMESTAMP},
+      c_user_id = #{record.cUserId,jdbcType=BIGINT},
+      m_user_id = #{record.mUserId,jdbcType=BIGINT},
+      enable = #{record.enable,jdbcType=INTEGER},
+      parent_id = #{record.parentId,jdbcType=BIGINT},
+      root_id = #{record.rootId,jdbcType=BIGINT},
+      route_id = #{record.routeId,jdbcType=VARCHAR},
+      route_name = #{record.routeName,jdbcType=VARCHAR},
+      ggs_time = #{record.ggsTime,jdbcType=TIMESTAMP},
+      level = #{record.level,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.etiantian.entity.NodeInfo">
+    update node_info
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gradeId != null">
+        grade_id = #{gradeId,jdbcType=INTEGER},
+      </if>
+      <if test="subjectId != null">
+        subject_id = #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="cTime != null">
+        c_time = #{cTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mTime != null">
+        m_time = #{mTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cUserId != null">
+        c_user_id = #{cUserId,jdbcType=BIGINT},
+      </if>
+      <if test="mUserId != null">
+        m_user_id = #{mUserId,jdbcType=BIGINT},
+      </if>
+      <if test="enable != null">
+        enable = #{enable,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="rootId != null">
+        root_id = #{rootId,jdbcType=BIGINT},
+      </if>
+      <if test="routeId != null">
+        route_id = #{routeId,jdbcType=VARCHAR},
+      </if>
+      <if test="routeName != null">
+        route_name = #{routeName,jdbcType=VARCHAR},
+      </if>
+      <if test="ggsTime != null">
+        ggs_time = #{ggsTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ref = #{ref,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.etiantian.entity.NodeInfo">
+    update node_info
+    set id = #{id,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      grade_id = #{gradeId,jdbcType=INTEGER},
+      subject_id = #{subjectId,jdbcType=INTEGER},
+      c_time = #{cTime,jdbcType=TIMESTAMP},
+      m_time = #{mTime,jdbcType=TIMESTAMP},
+      c_user_id = #{cUserId,jdbcType=BIGINT},
+      m_user_id = #{mUserId,jdbcType=BIGINT},
+      enable = #{enable,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=BIGINT},
+      root_id = #{rootId,jdbcType=BIGINT},
+      route_id = #{routeId,jdbcType=VARCHAR},
+      route_name = #{routeName,jdbcType=VARCHAR},
+      ggs_time = #{ggsTime,jdbcType=TIMESTAMP},
+      level = #{level,jdbcType=INTEGER}
+    where ref = #{ref,jdbcType=BIGINT}
+  </update>
+</mapper>
