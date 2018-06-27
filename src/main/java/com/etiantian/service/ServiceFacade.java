@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
 import java.util.Iterator;
 
 /**
@@ -141,8 +142,6 @@ public class ServiceFacade {
     }
 
     /**
-     * cTime
-     * setCTime
      * @param t
      * @param key
      * @param value
@@ -151,8 +150,7 @@ public class ServiceFacade {
      */
     static <T> void timeOperate(T t, String key, Object value) throws Exception {
         String methodName = "set" + toFirstUpperCase(underlineToCamel(key));
-        callMethod(t, methodName, value);
-       /* boolean bool1 = key.equals(C_TIME);
+        boolean bool1 = key.equals(C_TIME);
         boolean bool2 = key.equals(GGS_TIME);
         if (bool1 || bool2) {
             if(bool1){
@@ -161,8 +159,8 @@ public class ServiceFacade {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             callMethod(t, methodName, sdf.parse(value.toString()));
         } else {
-
-        }*/
+            callMethod(t, methodName, value);
+        }
     }
 
     public void doService(String topicName, JSONObject json) {
