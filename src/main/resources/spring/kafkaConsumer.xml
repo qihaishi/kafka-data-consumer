@@ -57,6 +57,8 @@
                 <value>node_info</value>
                 <value>node_info_del</value>
                 <value>dc_tp_course_info_new</value>
+                <value>j_material_node_info</value>
+                <value>j_material_node_info_del</value>
             </array>
         </constructor-arg>
     </bean>
