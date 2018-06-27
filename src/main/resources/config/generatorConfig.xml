@@ -55,5 +55,6 @@
         <table tableName="node_info_del" domainObjectName="NodeInfoDel"></table>
 
         -->
+        <table tableName="dc_tp_course_info_new" domainObjectName="DcTpCourseInfoNew"></table>
     </context>
 </generatorConfiguration>

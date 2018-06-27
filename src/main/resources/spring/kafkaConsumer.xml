@@ -56,6 +56,7 @@
                 <value>version_info_del</value>
                 <value>node_info</value>
                 <value>node_info_del</value>
+                <value>dc_tp_course_info_new</value>
             </array>
         </constructor-arg>
     </bean>
