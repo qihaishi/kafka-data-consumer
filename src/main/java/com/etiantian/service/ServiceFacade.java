@@ -180,7 +180,6 @@ public class ServiceFacade {
 
             if (json.has("query")) {
                 int affectRows = (Integer) callMethod(mapper, "updateByExampleSelective", entity, example);
-                logger.info("affectRows:"+affectRows);
                 if (affectRows < 1) {
                     callMethod(mapper, "insertSelective", entity);
                 }
