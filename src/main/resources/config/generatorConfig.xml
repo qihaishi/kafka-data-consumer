@@ -57,6 +57,8 @@
         <table tableName="node_info" domainObjectName="NodeInfo"></table>
         <table tableName="node_info_del" domainObjectName="NodeInfoDel"></table>
 
+        <table tableName="j_material_node_info" domainObjectName="JMaterialNodeInfo"></table>
+        <table tableName="j_material_node_info_del" domainObjectName="JMaterialNodeInfoDel"></table>
         -->
         <table tableName="dc_tp_course_info_new" domainObjectName="DcTpCourseInfoNew"></table>
     </context>
