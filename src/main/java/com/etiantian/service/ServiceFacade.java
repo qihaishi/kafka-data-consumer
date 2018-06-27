@@ -129,6 +129,9 @@ public class ServiceFacade {
                             param = ConvertUtils.convert(param, types[index]);
                         } else if (types[index].getSimpleName().toLowerCase().equals("string")) {
                             param = param.toString().replace("&apos;", "'");
+                        } else if (types[index].getSimpleName().toLowerCase().equals("date")) {
+                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            param = sdf.parse(param.toString());
                         }
                         params[index] = param;
                         index++;
@@ -150,7 +153,8 @@ public class ServiceFacade {
      */
     static <T> void timeOperate(T t, String key, Object value) throws Exception {
         String methodName = "set" + toFirstUpperCase(underlineToCamel(key));
-        boolean bool1 = key.equals(C_TIME);
+        callMethod(t, methodName, value);
+        /*boolean bool1 = key.equals(C_TIME);
         boolean bool2 = key.equals(GGS_TIME);
         if (bool1 || bool2) {
             if(bool1){
@@ -160,7 +164,7 @@ public class ServiceFacade {
             callMethod(t, methodName, sdf.parse(value.toString()));
         } else {
             callMethod(t, methodName, value);
-        }
+        }*/
     }
 
     public void doService(String topicName, JSONObject json) {
