@@ -2,9 +2,12 @@ package com.etiantian.dao.mappers;
 
 import com.etiantian.entity.JMaterialNodeInfo;
 import com.etiantian.entity.JMaterialNodeInfoExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+
+@Component("jMaterialNodeInfoMapper")
 public interface JMaterialNodeInfoMapper {
     int countByExample(JMaterialNodeInfoExample example);
 
