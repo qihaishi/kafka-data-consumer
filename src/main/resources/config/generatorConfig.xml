@@ -59,7 +59,9 @@
 
         <table tableName="j_material_node_info" domainObjectName="JMaterialNodeInfo"></table>
         <table tableName="j_material_node_info_del" domainObjectName="JMaterialNodeInfoDel"></table>
-        -->
         <table tableName="dc_tp_course_info_new" domainObjectName="DcTpCourseInfoNew"></table>
+        -->
+        <table tableName="j_node_resources" domainObjectName="JNodeResources"></table>
+        <table tableName="j_node_resources_del" domainObjectName="JNodeResourcesDel"></table>
     </context>
 </generatorConfiguration>
