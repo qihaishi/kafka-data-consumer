@@ -16,6 +16,10 @@ import java.util.Iterator;
  */
 @Service
 public class ServiceFacade {
+    /**
+     * c_user_id
+     * setCUserId
+     */
     public static final String C_TIME = "cTime";
     public static final char UNDERLINE = '_';
     public static final String GGS_TIME = "ggsTime";
