@@ -54,6 +54,8 @@
                 <value>recommend_resource_weight</value>-->
                 <value>version_info</value>
                 <value>version_info_del</value>
+                <value>material_info</value>
+                <value>material_info_del</value>
                 <value>node_info</value>
                 <value>node_info_del</value>
                 <value>dc_tp_course_info_new</value>

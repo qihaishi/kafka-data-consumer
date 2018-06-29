@@ -51,6 +51,9 @@
         <!--<table tableName="version_info" domainObjectName="VersionInfo"></table>
         <table tableName="version_info_del" domainObjectName="VersionInfoDel"></table>
 
+        <table tableName="material_info" domainObjectName="MaterialInfo"></table>
+        <table tableName="material_info_del" domainObjectName="MaterialInfoDel"></table>
+
         <table tableName="node_info" domainObjectName="NodeInfo"></table>
         <table tableName="node_info_del" domainObjectName="NodeInfoDel"></table>
 
