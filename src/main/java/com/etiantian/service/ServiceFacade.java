@@ -5,6 +5,7 @@ import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -21,8 +22,8 @@ public class ServiceFacade {
      * setCUserId
      */
     public static final String C_TIME = "cTime";
-    public static final char UNDERLINE = '_';
     public static final String GGS_TIME = "ggsTime";
+    public static final String UNDERLINE = "_";
     private static Logger logger = Logger.getLogger(ServiceFacade.class);
 
     /**
@@ -39,7 +40,7 @@ public class ServiceFacade {
         StringBuilder sb = new StringBuilder(len);
         for (int i = 0; i < len; i++) {
             char c = str.charAt(i);
-            if (c == UNDERLINE) {
+            if (c == '_') {
                 if (++i < len) {
                     sb.append(Character.toUpperCase(str.charAt(i)));
                 }
@@ -149,6 +150,8 @@ public class ServiceFacade {
     }
 
     /**
+     * setCUserId
+     *
      * @param t
      * @param key
      * @param value
@@ -156,19 +159,42 @@ public class ServiceFacade {
      * @throws Exception
      */
     static <T> void timeOperate(T t, String key, Object value) throws Exception {
-        String methodName = "set" + toFirstUpperCase(underlineToCamel(key));
-        callMethod(t, methodName, value);
-        /*boolean bool1 = key.equals(C_TIME);
-        boolean bool2 = key.equals(GGS_TIME);
-        if (bool1 || bool2) {
-            if(bool1){
+
+        if (!StringUtils.isEmpty(key)) {
+            String methodName;
+            boolean bool = notNeedConvert(key);
+            if(bool){
                 methodName = "set" + underlineToCamel(key);
+            }else{
+                methodName = "set" + toFirstUpperCase(underlineToCamel(key));
             }
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            callMethod(t, methodName, sdf.parse(value.toString()));
-        } else {
             callMethod(t, methodName, value);
-        }*/
+        }
+    }
+
+    /**
+     cTime
+     c_
+     * @param key
+     * @return
+     */
+    private static boolean notNeedConvert(String key) {
+        String secondStr = key.substring(1, 2);
+        char c = key.charAt(1);
+        boolean isUpper = c >= 65 && c <= 90;
+        if (secondStr.equals(UNDERLINE) || isUpper) {
+            return true;
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        String str = "ggsTime";
+        System.out.println(notNeedConvert(str));
+
+        String str1 = "c_user_id";
+        System.out.println(notNeedConvert(str1));
+
     }
 
     public void doService(String topicName, JSONObject json) {
