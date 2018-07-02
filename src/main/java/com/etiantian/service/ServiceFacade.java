@@ -1,6 +1,5 @@
 package com.etiantian.service;
 
-import com.etiantian.entity.JNodeResources;
 import com.etiantian.launcher.SpringContext;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.log4j.Logger;
@@ -18,12 +17,7 @@ import java.util.Iterator;
  */
 @Service
 public class ServiceFacade {
-    /**
-     * c_user_id
-     * setCUserId
-     */
-    public static final String C_TIME = "cTime";
-    public static final String GGS_TIME = "ggsTime";
+
     public static final String UNDERLINE = "_";
     private static Logger logger = Logger.getLogger(ServiceFacade.class);
 
@@ -189,7 +183,7 @@ public class ServiceFacade {
         return false;
     }
 
-    public static void main(String[] args) {
+ /*   public static void main(String[] args) {
         String str = "ggsTime";
         System.out.println(notNeedConvert(str));
 
@@ -215,10 +209,10 @@ public class ServiceFacade {
             e.printStackTrace();
         }
     }
+*/
 
 
-
-    public static void doService(String topicName, JSONObject json) {
+    public void doService(String topicName, JSONObject json) {
         try {
             topicName = topicName.toLowerCase();
             // get service object
