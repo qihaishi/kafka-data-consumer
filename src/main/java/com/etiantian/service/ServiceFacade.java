@@ -1,5 +1,6 @@
 package com.etiantian.service;
 
+import com.etiantian.entity.JNodeResources;
 import com.etiantian.launcher.SpringContext;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.log4j.Logger;
@@ -195,9 +196,29 @@ public class ServiceFacade {
         String str1 = "c_user_id";
         System.out.println(notNeedConvert(str1));
 
+        JSONObject json = new JSONObject();
+        JSONObject query = new JSONObject();
+        JSONObject update = new JSONObject();
+        query.put("resource_id", 1);
+        query.put("dir_id", 1);
+        update.put("c_time", "2018-07-02 18:30:37");
+
+        json.put("query",query);
+        json.put("update",update);
+
+
+        JNodeResources jNodeResources = new JNodeResources();
+        try {
+            timeOperate(jNodeResources, "c_time", "2018-07-02 18:30:37");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public void doService(String topicName, JSONObject json) {
+
+
+    public static void doService(String topicName, JSONObject json) {
         try {
             topicName = topicName.toLowerCase();
             // get service object
