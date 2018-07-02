@@ -63,6 +63,12 @@
                 <value>j_material_node_info_del</value>
                 <value>j_node_resources</value>
                 <value>j_node_resources_del</value>
+                <value>micro_course_info</value>
+                <value>micro_course_info_del</value>
+                <value>j_micro_course_resource</value>
+                <value>j_micro_course_resource_del</value>
+                <value>j_micro_course_rs_ques</value>
+                <value>j_micro_course_rs_ques_del</value>
             </array>
         </constructor-arg>
     </bean>
