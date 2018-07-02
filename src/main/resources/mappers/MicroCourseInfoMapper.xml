@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.etiantian.dao.mappers.MicroCourseInfoMapper">
+  <resultMap id="BaseResultMap" type="com.etiantian.entity.MicroCourseInfo">
+    <id column="ref" jdbcType="BIGINT" property="ref" />
+    <result column="course_id" jdbcType="BIGINT" property="courseId" />
+    <result column="course_name" jdbcType="VARCHAR" property="courseName" />
+    <result column="enable" jdbcType="INTEGER" property="enable" />
+    <result column="c_user_id" jdbcType="BIGINT" property="cUserId" />
+    <result column="c_time" jdbcType="TIMESTAMP" property="cTime" />
+    <result column="m_user_id" jdbcType="BIGINT" property="mUserId" />
+    <result column="m_time" jdbcType="TIMESTAMP" property="mTime" />
+    <result column="ggs_time" jdbcType="TIMESTAMP" property="ggsTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ref, course_id, course_name, enable, c_user_id, c_time, m_user_id, m_time, ggs_time
+  </sql>
+  <select id="selectByExample" parameterType="com.etiantian.entity.MicroCourseInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from micro_course_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from micro_course_info
+    where ref = #{ref,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from micro_course_info
+    where ref = #{ref,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.etiantian.entity.MicroCourseInfoExample">
+    delete from micro_course_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.etiantian.entity.MicroCourseInfo">
+    insert into micro_course_info (ref, course_id, course_name, 
+      enable, c_user_id, c_time, 
+      m_user_id, m_time, ggs_time
+      )
+    values (#{ref,jdbcType=BIGINT}, #{courseId,jdbcType=BIGINT}, #{courseName,jdbcType=VARCHAR}, 
+      #{enable,jdbcType=INTEGER}, #{cUserId,jdbcType=BIGINT}, #{cTime,jdbcType=TIMESTAMP}, 
+      #{mUserId,jdbcType=BIGINT}, #{mTime,jdbcType=TIMESTAMP}, #{ggsTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.etiantian.entity.MicroCourseInfo">
+    insert into micro_course_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ref != null">
+        ref,
+      </if>
+      <if test="courseId != null">
+        course_id,
+      </if>
+      <if test="courseName != null">
+        course_name,
+      </if>
+      <if test="enable != null">
+        enable,
+      </if>
+      <if test="cUserId != null">
+        c_user_id,
+      </if>
+      <if test="cTime != null">
+        c_time,
+      </if>
+      <if test="mUserId != null">
+        m_user_id,
+      </if>
+      <if test="mTime != null">
+        m_time,
+      </if>
+      <if test="ggsTime != null">
+        ggs_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ref != null">
+        #{ref,jdbcType=BIGINT},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="courseName != null">
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="enable != null">
+        #{enable,jdbcType=INTEGER},
+      </if>
+      <if test="cUserId != null">
+        #{cUserId,jdbcType=BIGINT},
+      </if>
+      <if test="cTime != null">
+        #{cTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mUserId != null">
+        #{mUserId,jdbcType=BIGINT},
+      </if>
+      <if test="mTime != null">
+        #{mTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ggsTime != null">
+        #{ggsTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.etiantian.entity.MicroCourseInfoExample" resultType="java.lang.Integer">
+    select count(*) from micro_course_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update micro_course_info
+    <set>
+      <if test="record.ref != null">
+        ref = #{record.ref,jdbcType=BIGINT},
+      </if>
+      <if test="record.courseId != null">
+        course_id = #{record.courseId,jdbcType=BIGINT},
+      </if>
+      <if test="record.courseName != null">
+        course_name = #{record.courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enable != null">
+        enable = #{record.enable,jdbcType=INTEGER},
+      </if>
+      <if test="record.cUserId != null">
+        c_user_id = #{record.cUserId,jdbcType=BIGINT},
+      </if>
+      <if test="record.cTime != null">
+        c_time = #{record.cTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mUserId != null">
+        m_user_id = #{record.mUserId,jdbcType=BIGINT},
+      </if>
+      <if test="record.mTime != null">
+        m_time = #{record.mTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ggsTime != null">
+        ggs_time = #{record.ggsTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update micro_course_info
+    set ref = #{record.ref,jdbcType=BIGINT},
+      course_id = #{record.courseId,jdbcType=BIGINT},
+      course_name = #{record.courseName,jdbcType=VARCHAR},
+      enable = #{record.enable,jdbcType=INTEGER},
+      c_user_id = #{record.cUserId,jdbcType=BIGINT},
+      c_time = #{record.cTime,jdbcType=TIMESTAMP},
+      m_user_id = #{record.mUserId,jdbcType=BIGINT},
+      m_time = #{record.mTime,jdbcType=TIMESTAMP},
+      ggs_time = #{record.ggsTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.etiantian.entity.MicroCourseInfo">
+    update micro_course_info
+    <set>
+      <if test="courseId != null">
+        course_id = #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="courseName != null">
+        course_name = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="enable != null">
+        enable = #{enable,jdbcType=INTEGER},
+      </if>
+      <if test="cUserId != null">
+        c_user_id = #{cUserId,jdbcType=BIGINT},
+      </if>
+      <if test="cTime != null">
+        c_time = #{cTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mUserId != null">
+        m_user_id = #{mUserId,jdbcType=BIGINT},
+      </if>
+      <if test="mTime != null">
+        m_time = #{mTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ggsTime != null">
+        ggs_time = #{ggsTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ref = #{ref,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.etiantian.entity.MicroCourseInfo">
+    update micro_course_info
+    set course_id = #{courseId,jdbcType=BIGINT},
+      course_name = #{courseName,jdbcType=VARCHAR},
+      enable = #{enable,jdbcType=INTEGER},
+      c_user_id = #{cUserId,jdbcType=BIGINT},
+      c_time = #{cTime,jdbcType=TIMESTAMP},
+      m_user_id = #{mUserId,jdbcType=BIGINT},
+      m_time = #{mTime,jdbcType=TIMESTAMP},
+      ggs_time = #{ggsTime,jdbcType=TIMESTAMP}
+    where ref = #{ref,jdbcType=BIGINT}
+  </update>
+</mapper>

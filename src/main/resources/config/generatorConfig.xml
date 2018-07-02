@@ -59,7 +59,16 @@
 
         <table tableName="j_material_node_info" domainObjectName="JMaterialNodeInfo"></table>
         <table tableName="j_material_node_info_del" domainObjectName="JMaterialNodeInfoDel"></table>
-        -->
         <table tableName="dc_tp_course_info_new" domainObjectName="DcTpCourseInfoNew"></table>
+        <table tableName="j_node_resources" domainObjectName="JNodeResources"></table>
+        <table tableName="j_node_resources_del" domainObjectName="JNodeResourcesDel"></table>
+        <table tableName="micro_course_info" domainObjectName="MicroCourseInfo"></table>
+        <table tableName="micro_course_info_del" domainObjectName="MicroCourseInfoDel"></table>
+        <table tableName="j_micro_course_resource" domainObjectName="JMicroCourseResource"></table>
+        <table tableName="j_micro_course_resource_del" domainObjectName="JMicroCourseResourceDel"></table>
+        <table tableName="j_micro_course_rs_ques" domainObjectName="JMicroCourseRsQues"></table>
+        <table tableName="j_micro_course_rs_ques_del" domainObjectName="JMicroCourseRsQuesDel"></table>
+        -->
+
     </context>
 </generatorConfiguration>
