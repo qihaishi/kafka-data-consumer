@@ -11,13 +11,13 @@ drop table if exists j_micro_course_resource;
 /*==============================================================*/
 create table j_micro_course_resource
 (
-   ref                  bigint(18) not null comment '自增主键',
+   ref                  bigint(18) not null auto_increment comment '自增主键',
    module_id            bigint(18) not null comment '微课程id',
    resource_id          bigint(18) not null comment '资源Id',
    resource_type        int(3) not null comment '资源类型',
    sort_num             int(2) not null default 1 comment '排序号',
-   c_user_id            bigint(18) not null comment '创建人',
-   c_time               datetime not null comment '创建时间',
+   c_user_id            bigint(18) comment '创建人',
+   c_time               datetime comment '创建时间',
    ggs_time             timestamp not null default CURRENT_TIMESTAMP,
    primary key (ref)
 );

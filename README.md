@@ -6,3 +6,4 @@
    如:
    @Component("jMaterialNodeInfoDelMapper")
    public interface JMaterialNodeInfoDelMapper
+2. c_time , c_user_id , m_time, m_user_id 等以单字母_开头的变量,在反射注入实体方法时需处理为setcTime等
