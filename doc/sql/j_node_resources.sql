@@ -1,24 +1,36 @@
-CREATE TABLE oragbk.j_node_resources
+
+
+drop index idx_dir_id on oragbk.j_node_resources;
+
+drop index idx_res_id on oragbk.j_node_resources;
+
+drop table if exists oragbk.j_node_resources;
+
+/*==============================================================*/
+/* Table: j_node_resources                                      */
+/*==============================================================*/
+create table oragbk.j_node_resources
 (
-   ref                  BIGINT(19) NOT NULL AUTO_INCREMENT,
-   resource_id          BIGINT(19) NOT NULL,
-   dir_id               BIGINT(19) NOT NULL,
-   item_id              INT(5),
-   resource_type        INT(4) DEFAULT 0,
-   c_time               DATETIME NOT NULL,
-   m_time               DATETIME,
-   c_user_id            BIGINT(19),
-   m_user_id            BIGINT(19),
-   ggs_time             TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-   PRIMARY KEY (ref)
+   ref                  bigint(19) not null auto_increment,
+   resource_id          bigint(19) not null,
+   dir_id               bigint(19) not null,
+   item_id              int(5),
+   is_direct            int(1) not null default 0,
+   resource_type        int(4) default 0,
+   c_time               datetime not null,
+   m_time               datetime,
+   c_user_id            bigint(19),
+   m_user_id            bigint(19),
+   ggs_time             timestamp not null default CURRENT_TIMESTAMP,
+   primary key (ref)
 );
 
-ALTER TABLE oragbk.j_node_resources COMMENT '节点和资源关系表';
+alter table oragbk.j_node_resources comment '节点和资源关系表';
 
 /*==============================================================*/
 /* Index: idx_res_id                                            */
 /*==============================================================*/
-CREATE INDEX idx_res_id ON oragbk.j_node_resources
+create index idx_res_id on oragbk.j_node_resources
 (
    resource_id
 );
@@ -26,7 +38,9 @@ CREATE INDEX idx_res_id ON oragbk.j_node_resources
 /*==============================================================*/
 /* Index: idx_dir_id                                            */
 /*==============================================================*/
-CREATE INDEX idx_dir_id ON oragbk.j_node_resources
+create index idx_dir_id on oragbk.j_node_resources
 (
    dir_id
 );
+
+

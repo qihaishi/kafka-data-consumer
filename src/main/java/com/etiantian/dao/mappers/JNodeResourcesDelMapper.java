@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-
 @Component("jNodeResourcesDelMapper")
 public interface JNodeResourcesDelMapper {
     int countByExample(JNodeResourcesDelExample example);

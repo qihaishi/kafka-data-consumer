@@ -11,6 +11,8 @@ public class JNodeResourcesDel {
 
     private Integer itemId;
 
+    private Integer isDirect;
+
     private Integer resourceType;
 
     private Date cTime;
@@ -53,6 +55,14 @@ public class JNodeResourcesDel {
 
     public void setItemId(Integer itemId) {
         this.itemId = itemId;
+    }
+
+    public Integer getIsDirect() {
+        return isDirect;
+    }
+
+    public void setIsDirect(Integer isDirect) {
+        this.isDirect = isDirect;
     }
 
     public Integer getResourceType() {

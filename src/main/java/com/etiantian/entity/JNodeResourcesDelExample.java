@@ -345,6 +345,66 @@ public class JNodeResourcesDelExample {
             return (Criteria) this;
         }
 
+        public Criteria andIsDirectIsNull() {
+            addCriterion("is_direct is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDirectIsNotNull() {
+            addCriterion("is_direct is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDirectEqualTo(Integer value) {
+            addCriterion("is_direct =", value, "isDirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDirectNotEqualTo(Integer value) {
+            addCriterion("is_direct <>", value, "isDirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDirectGreaterThan(Integer value) {
+            addCriterion("is_direct >", value, "isDirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDirectGreaterThanOrEqualTo(Integer value) {
+            addCriterion("is_direct >=", value, "isDirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDirectLessThan(Integer value) {
+            addCriterion("is_direct <", value, "isDirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDirectLessThanOrEqualTo(Integer value) {
+            addCriterion("is_direct <=", value, "isDirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDirectIn(List<Integer> values) {
+            addCriterion("is_direct in", values, "isDirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDirectNotIn(List<Integer> values) {
+            addCriterion("is_direct not in", values, "isDirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDirectBetween(Integer value1, Integer value2) {
+            addCriterion("is_direct between", value1, value2, "isDirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDirectNotBetween(Integer value1, Integer value2) {
+            addCriterion("is_direct not between", value1, value2, "isDirect");
+            return (Criteria) this;
+        }
+
         public Criteria andResourceTypeIsNull() {
             addCriterion("resource_type is null");
             return (Criteria) this;
