@@ -15,8 +15,8 @@ create table j_micro_course_rs_ques_del
    resource_id          bigint(18) not null comment '资源id',
    question_id          bigint(18) not null comment '试题id',
    paper_sort           int(1) not null default 0 comment '排序号',
-   c_user_id            bigint(18) not null comment '创建人',
-   c_time               datetime not null comment '创建时间',
+   c_user_id            bigint(18) comment '创建人',
+   c_time               datetime comment '创建时间',
    ggs_time             timestamp not null default CURRENT_TIMESTAMP,
    primary key (ref)
 );

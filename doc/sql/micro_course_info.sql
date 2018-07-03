@@ -1,5 +1,5 @@
--- drop index IDX_MICRO_COURSE_INFO_COURSE_ID on micro_course_info;
---
+-- -- drop index IDX_MICRO_COURSE_INFO_COURSE_ID on micro_course_info;
+-- --
 -- drop index IDX_MICRO_COURSE_INFO_GGS_TIME on micro_course_info;
 
 drop table if exists micro_course_info;
@@ -13,8 +13,8 @@ create table micro_course_info
    course_id            bigint(19) not null comment '微课程Id',
    course_name          varchar(100) not null comment '微课程名称',
    enable               int(1) not null default 0 comment '是否有效,0:无效,1:有效',
-   c_user_id            bigint(18) not null comment '创建人',
-   c_time               datetime not null comment '创建时间',
+   c_user_id            bigint(18) comment '创建人',
+   c_time               datetime comment '创建时间',
    m_user_id            bigint(18) comment '更新人',
    m_time               datetime comment '更新时间',
    ggs_time             timestamp not null default CURRENT_TIMESTAMP,
