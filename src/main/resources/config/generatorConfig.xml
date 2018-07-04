@@ -69,8 +69,9 @@
         <table tableName="j_micro_course_rs_ques" domainObjectName="JMicroCourseRsQues"></table>
         <table tableName="j_micro_course_rs_ques_del" domainObjectName="JMicroCourseRsQuesDel"></table>
         -->
-        <table tableName="j_node_resources" domainObjectName="JNodeResources"></table>
-        <table tableName="j_node_resources_del" domainObjectName="JNodeResourcesDel"></table>
+        <table tableName="j_node_micro_course" domainObjectName="JNodeMicroCourse"></table>
+        <table tableName="j_node_micro_course_del" domainObjectName="JNodeMicroCourseDel"></table>
+
 
     </context>
 </generatorConfiguration>
