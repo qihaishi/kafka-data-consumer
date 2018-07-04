@@ -2,9 +2,12 @@ package com.etiantian.dao.mappers;
 
 import com.etiantian.entity.JNodeMicroCourse;
 import com.etiantian.entity.JNodeMicroCourseExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+
+@Component("jNodeMicroCourseMapper")
 public interface JNodeMicroCourseMapper {
     int countByExample(JNodeMicroCourseExample example);
 
