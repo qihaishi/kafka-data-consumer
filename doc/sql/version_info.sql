@@ -2,6 +2,7 @@ CREATE TABLE `version_info` (
   `ref` int(11) NOT NULL AUTO_INCREMENT COMMENT '流水',
   `version_id` int(11) NOT NULL COMMENT '版本',
   `version_name` varchar(500) NOT NULL COMMENT '版本名称',
+  `old_version_id` int(11) NULL COMMENT '旧版本Id',
   `cont_desc` varchar(500) DEFAULT NULL COMMENT '描述',
   `abbreviation` varchar(200) DEFAULT NULL COMMENT '版本简称',
   `is_only_for_primark` int(1) NOT NULL DEFAULT '0' COMMENT '是否只用于小学,0:否，1：是',
