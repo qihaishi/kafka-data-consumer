@@ -68,9 +68,11 @@
         <table tableName="j_micro_course_resource_del" domainObjectName="JMicroCourseResourceDel"></table>
         <table tableName="j_micro_course_rs_ques" domainObjectName="JMicroCourseRsQues"></table>
         <table tableName="j_micro_course_rs_ques_del" domainObjectName="JMicroCourseRsQuesDel"></table>
-        -->
         <table tableName="j_node_micro_course" domainObjectName="JNodeMicroCourse"></table>
         <table tableName="j_node_micro_course_del" domainObjectName="JNodeMicroCourseDel"></table>
+        -->
+        <table tableName="j_ab_paper_question" domainObjectName="JAbPaperQuestion"></table>
+        <table tableName="j_ab_paper_question_del" domainObjectName="JAbPaperQuestionDel"></table>
 
 
     </context>

@@ -71,6 +71,8 @@
                 <value>j_micro_course_rs_ques_del</value>
                 <value>j_node_micro_course</value>
                 <value>j_node_micro_course_del</value>
+                <value>j_ab_paper_question</value>
+                <value>j_ab_paper_question_del</value>
             </array>
         </constructor-arg>
     </bean>
