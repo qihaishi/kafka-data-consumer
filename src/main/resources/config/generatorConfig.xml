@@ -70,10 +70,12 @@
         <table tableName="j_micro_course_rs_ques_del" domainObjectName="JMicroCourseRsQuesDel"></table>
         <table tableName="j_node_micro_course" domainObjectName="JNodeMicroCourse"></table>
         <table tableName="j_node_micro_course_del" domainObjectName="JNodeMicroCourseDel"></table>
-        -->
+
         <table tableName="j_ab_paper_question" domainObjectName="JAbPaperQuestion"></table>
         <table tableName="j_ab_paper_question_del" domainObjectName="JAbPaperQuestionDel"></table>
-
+        -->
+        <table tableName="version_info" domainObjectName="VersionInfo"></table>
+        <table tableName="version_info_del" domainObjectName="VersionInfoDel"></table>
 
     </context>
 </generatorConfiguration>

@@ -17,5 +17,6 @@ CREATE TABLE `version_info` (
   PRIMARY KEY (`ref`),
   KEY `idx_vid` (`version_id`),
   KEY `idx_subject_id` (`subject_id`),
+  KEY `idx_old_vid` (`old_version_id`),
   KEY `idx_section_id` (`section_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=gbk
