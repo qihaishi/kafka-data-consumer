@@ -295,6 +295,66 @@ public class VersionInfoExample {
             return (Criteria) this;
         }
 
+        public Criteria andOldVersionIdIsNull() {
+            addCriterion("old_version_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldVersionIdIsNotNull() {
+            addCriterion("old_version_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldVersionIdEqualTo(Integer value) {
+            addCriterion("old_version_id =", value, "oldVersionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldVersionIdNotEqualTo(Integer value) {
+            addCriterion("old_version_id <>", value, "oldVersionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldVersionIdGreaterThan(Integer value) {
+            addCriterion("old_version_id >", value, "oldVersionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldVersionIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("old_version_id >=", value, "oldVersionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldVersionIdLessThan(Integer value) {
+            addCriterion("old_version_id <", value, "oldVersionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldVersionIdLessThanOrEqualTo(Integer value) {
+            addCriterion("old_version_id <=", value, "oldVersionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldVersionIdIn(List<Integer> values) {
+            addCriterion("old_version_id in", values, "oldVersionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldVersionIdNotIn(List<Integer> values) {
+            addCriterion("old_version_id not in", values, "oldVersionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldVersionIdBetween(Integer value1, Integer value2) {
+            addCriterion("old_version_id between", value1, value2, "oldVersionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldVersionIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("old_version_id not between", value1, value2, "oldVersionId");
+            return (Criteria) this;
+        }
+
         public Criteria andContDescIsNull() {
             addCriterion("cont_desc is null");
             return (Criteria) this;
@@ -435,63 +495,63 @@ public class VersionInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsOnlyForPrimaryIsNull() {
-            addCriterion("is_only_for_primary is null");
+        public Criteria andIsOnlyForPrimarkIsNull() {
+            addCriterion("is_only_for_primark is null");
             return (Criteria) this;
         }
 
-        public Criteria andIsOnlyForPrimaryIsNotNull() {
-            addCriterion("is_only_for_primary is not null");
+        public Criteria andIsOnlyForPrimarkIsNotNull() {
+            addCriterion("is_only_for_primark is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIsOnlyForPrimaryEqualTo(Integer value) {
-            addCriterion("is_only_for_primary =", value, "isOnlyForPrimary");
+        public Criteria andIsOnlyForPrimarkEqualTo(Integer value) {
+            addCriterion("is_only_for_primark =", value, "isOnlyForPrimark");
             return (Criteria) this;
         }
 
-        public Criteria andIsOnlyForPrimaryNotEqualTo(Integer value) {
-            addCriterion("is_only_for_primary <>", value, "isOnlyForPrimary");
+        public Criteria andIsOnlyForPrimarkNotEqualTo(Integer value) {
+            addCriterion("is_only_for_primark <>", value, "isOnlyForPrimark");
             return (Criteria) this;
         }
 
-        public Criteria andIsOnlyForPrimaryGreaterThan(Integer value) {
-            addCriterion("is_only_for_primary >", value, "isOnlyForPrimary");
+        public Criteria andIsOnlyForPrimarkGreaterThan(Integer value) {
+            addCriterion("is_only_for_primark >", value, "isOnlyForPrimark");
             return (Criteria) this;
         }
 
-        public Criteria andIsOnlyForPrimaryGreaterThanOrEqualTo(Integer value) {
-            addCriterion("is_only_for_primary >=", value, "isOnlyForPrimary");
+        public Criteria andIsOnlyForPrimarkGreaterThanOrEqualTo(Integer value) {
+            addCriterion("is_only_for_primark >=", value, "isOnlyForPrimark");
             return (Criteria) this;
         }
 
-        public Criteria andIsOnlyForPrimaryLessThan(Integer value) {
-            addCriterion("is_only_for_primary <", value, "isOnlyForPrimary");
+        public Criteria andIsOnlyForPrimarkLessThan(Integer value) {
+            addCriterion("is_only_for_primark <", value, "isOnlyForPrimark");
             return (Criteria) this;
         }
 
-        public Criteria andIsOnlyForPrimaryLessThanOrEqualTo(Integer value) {
-            addCriterion("is_only_for_primary <=", value, "isOnlyForPrimary");
+        public Criteria andIsOnlyForPrimarkLessThanOrEqualTo(Integer value) {
+            addCriterion("is_only_for_primark <=", value, "isOnlyForPrimark");
             return (Criteria) this;
         }
 
-        public Criteria andIsOnlyForPrimaryIn(List<Integer> values) {
-            addCriterion("is_only_for_primary in", values, "isOnlyForPrimary");
+        public Criteria andIsOnlyForPrimarkIn(List<Integer> values) {
+            addCriterion("is_only_for_primark in", values, "isOnlyForPrimark");
             return (Criteria) this;
         }
 
-        public Criteria andIsOnlyForPrimaryNotIn(List<Integer> values) {
-            addCriterion("is_only_for_primary not in", values, "isOnlyForPrimary");
+        public Criteria andIsOnlyForPrimarkNotIn(List<Integer> values) {
+            addCriterion("is_only_for_primark not in", values, "isOnlyForPrimark");
             return (Criteria) this;
         }
 
-        public Criteria andIsOnlyForPrimaryBetween(Integer value1, Integer value2) {
-            addCriterion("is_only_for_primary between", value1, value2, "isOnlyForPrimary");
+        public Criteria andIsOnlyForPrimarkBetween(Integer value1, Integer value2) {
+            addCriterion("is_only_for_primark between", value1, value2, "isOnlyForPrimark");
             return (Criteria) this;
         }
 
-        public Criteria andIsOnlyForPrimaryNotBetween(Integer value1, Integer value2) {
-            addCriterion("is_only_for_primary not between", value1, value2, "isOnlyForPrimary");
+        public Criteria andIsOnlyForPrimarkNotBetween(Integer value1, Integer value2) {
+            addCriterion("is_only_for_primark not between", value1, value2, "isOnlyForPrimark");
             return (Criteria) this;
         }
 

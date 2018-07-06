@@ -2,6 +2,7 @@ CREATE TABLE `version_info_del` (
   `ref` INT(11) NOT NULL AUTO_INCREMENT COMMENT '流水',
   `version_id` INT(11) NOT NULL COMMENT '版本',
   `version_name` VARCHAR(500) NOT NULL COMMENT '版本名称',
+  `old_version_id` int(11) NULL COMMENT '旧版本Id',
   `cont_desc` VARCHAR(500) DEFAULT NULL COMMENT '描述',
   `abbreviation` VARCHAR(200) DEFAULT NULL COMMENT '版本简称',
   `is_only_for_primark` INT(1) NOT NULL DEFAULT '0' COMMENT '是否只用于小学,0:否，1：是',
@@ -16,5 +17,6 @@ CREATE TABLE `version_info_del` (
   PRIMARY KEY (`ref`),
   KEY `idx_vid` (`version_id`),
   KEY `idx_subject_id` (`subject_id`),
+  KEY `idx_old_vid` (`old_version_id`),
   KEY `idx_section_id` (`section_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=gbk

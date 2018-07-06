@@ -5,6 +5,372 @@
     <id column="ref" jdbcType="INTEGER" property="ref" />
     <result column="version_id" jdbcType="INTEGER" property="versionId" />
     <result column="version_name" jdbcType="VARCHAR" property="versionName" />
+    <result column="old_version_id" jdbcType="INTEGER" property="oldVersionId" />
+    <result column="cont_desc" jdbcType="VARCHAR" property="contDesc" />
+    <result column="abbreviation" jdbcType="VARCHAR" property="abbreviation" />
+    <result column="is_only_for_primark" jdbcType="INTEGER" property="isOnlyForPrimark" />
+    <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
+    <result column="section_id" jdbcType="INTEGER" property="sectionId" />
+    <result column="c_time" jdbcType="TIMESTAMP" property="cTime" />
+    <result column="c_user_id" jdbcType="INTEGER" property="cUserId" />
+    <result column="m_time" jdbcType="TIMESTAMP" property="mTime" />
+    <result column="m_user_id" jdbcType="INTEGER" property="mUserId" />
+    <result column="active" jdbcType="INTEGER" property="active" />
+    <result column="ggs_time" jdbcType="TIMESTAMP" property="ggsTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ref, version_id, version_name, old_version_id, cont_desc, abbreviation, is_only_for_primark, 
+    subject_id, section_id, c_time, c_user_id, m_time, m_user_id, active, ggs_time
+  </sql>
+  <select id="selectByExample" parameterType="com.etiantian.entity.VersionInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from version_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from version_info
+    where ref = #{ref,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from version_info
+    where ref = #{ref,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.etiantian.entity.VersionInfoExample">
+    delete from version_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.etiantian.entity.VersionInfo">
+    insert into version_info (ref, version_id, version_name, 
+      old_version_id, cont_desc, abbreviation, 
+      is_only_for_primark, subject_id, section_id, 
+      c_time, c_user_id, m_time, 
+      m_user_id, active, ggs_time
+      )
+    values (#{ref,jdbcType=INTEGER}, #{versionId,jdbcType=INTEGER}, #{versionName,jdbcType=VARCHAR}, 
+      #{oldVersionId,jdbcType=INTEGER}, #{contDesc,jdbcType=VARCHAR}, #{abbreviation,jdbcType=VARCHAR}, 
+      #{isOnlyForPrimark,jdbcType=INTEGER}, #{subjectId,jdbcType=INTEGER}, #{sectionId,jdbcType=INTEGER}, 
+      #{cTime,jdbcType=TIMESTAMP}, #{cUserId,jdbcType=INTEGER}, #{mTime,jdbcType=TIMESTAMP}, 
+      #{mUserId,jdbcType=INTEGER}, #{active,jdbcType=INTEGER}, #{ggsTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.etiantian.entity.VersionInfo">
+    insert into version_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ref != null">
+        ref,
+      </if>
+      <if test="versionId != null">
+        version_id,
+      </if>
+      <if test="versionName != null">
+        version_name,
+      </if>
+      <if test="oldVersionId != null">
+        old_version_id,
+      </if>
+      <if test="contDesc != null">
+        cont_desc,
+      </if>
+      <if test="abbreviation != null">
+        abbreviation,
+      </if>
+      <if test="isOnlyForPrimark != null">
+        is_only_for_primark,
+      </if>
+      <if test="subjectId != null">
+        subject_id,
+      </if>
+      <if test="sectionId != null">
+        section_id,
+      </if>
+      <if test="cTime != null">
+        c_time,
+      </if>
+      <if test="cUserId != null">
+        c_user_id,
+      </if>
+      <if test="mTime != null">
+        m_time,
+      </if>
+      <if test="mUserId != null">
+        m_user_id,
+      </if>
+      <if test="active != null">
+        active,
+      </if>
+      <if test="ggsTime != null">
+        ggs_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ref != null">
+        #{ref,jdbcType=INTEGER},
+      </if>
+      <if test="versionId != null">
+        #{versionId,jdbcType=INTEGER},
+      </if>
+      <if test="versionName != null">
+        #{versionName,jdbcType=VARCHAR},
+      </if>
+      <if test="oldVersionId != null">
+        #{oldVersionId,jdbcType=INTEGER},
+      </if>
+      <if test="contDesc != null">
+        #{contDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="abbreviation != null">
+        #{abbreviation,jdbcType=VARCHAR},
+      </if>
+      <if test="isOnlyForPrimark != null">
+        #{isOnlyForPrimark,jdbcType=INTEGER},
+      </if>
+      <if test="subjectId != null">
+        #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="sectionId != null">
+        #{sectionId,jdbcType=INTEGER},
+      </if>
+      <if test="cTime != null">
+        #{cTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cUserId != null">
+        #{cUserId,jdbcType=INTEGER},
+      </if>
+      <if test="mTime != null">
+        #{mTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mUserId != null">
+        #{mUserId,jdbcType=INTEGER},
+      </if>
+      <if test="active != null">
+        #{active,jdbcType=INTEGER},
+      </if>
+      <if test="ggsTime != null">
+        #{ggsTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.etiantian.entity.VersionInfoExample" resultType="java.lang.Integer">
+    select count(*) from version_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update version_info
+    <set>
+      <if test="record.ref != null">
+        ref = #{record.ref,jdbcType=INTEGER},
+      </if>
+      <if test="record.versionId != null">
+        version_id = #{record.versionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.versionName != null">
+        version_name = #{record.versionName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oldVersionId != null">
+        old_version_id = #{record.oldVersionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.contDesc != null">
+        cont_desc = #{record.contDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abbreviation != null">
+        abbreviation = #{record.abbreviation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isOnlyForPrimark != null">
+        is_only_for_primark = #{record.isOnlyForPrimark,jdbcType=INTEGER},
+      </if>
+      <if test="record.subjectId != null">
+        subject_id = #{record.subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="record.sectionId != null">
+        section_id = #{record.sectionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cTime != null">
+        c_time = #{record.cTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cUserId != null">
+        c_user_id = #{record.cUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.mTime != null">
+        m_time = #{record.mTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mUserId != null">
+        m_user_id = #{record.mUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.active != null">
+        active = #{record.active,jdbcType=INTEGER},
+      </if>
+      <if test="record.ggsTime != null">
+        ggs_time = #{record.ggsTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update version_info
+    set ref = #{record.ref,jdbcType=INTEGER},
+      version_id = #{record.versionId,jdbcType=INTEGER},
+      version_name = #{record.versionName,jdbcType=VARCHAR},
+      old_version_id = #{record.oldVersionId,jdbcType=INTEGER},
+      cont_desc = #{record.contDesc,jdbcType=VARCHAR},
+      abbreviation = #{record.abbreviation,jdbcType=VARCHAR},
+      is_only_for_primark = #{record.isOnlyForPrimark,jdbcType=INTEGER},
+      subject_id = #{record.subjectId,jdbcType=INTEGER},
+      section_id = #{record.sectionId,jdbcType=INTEGER},
+      c_time = #{record.cTime,jdbcType=TIMESTAMP},
+      c_user_id = #{record.cUserId,jdbcType=INTEGER},
+      m_time = #{record.mTime,jdbcType=TIMESTAMP},
+      m_user_id = #{record.mUserId,jdbcType=INTEGER},
+      active = #{record.active,jdbcType=INTEGER},
+      ggs_time = #{record.ggsTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.etiantian.entity.VersionInfo">
+    update version_info
+    <set>
+      <if test="versionId != null">
+        version_id = #{versionId,jdbcType=INTEGER},
+      </if>
+      <if test="versionName != null">
+        version_name = #{versionName,jdbcType=VARCHAR},
+      </if>
+      <if test="oldVersionId != null">
+        old_version_id = #{oldVersionId,jdbcType=INTEGER},
+      </if>
+      <if test="contDesc != null">
+        cont_desc = #{contDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="abbreviation != null">
+        abbreviation = #{abbreviation,jdbcType=VARCHAR},
+      </if>
+      <if test="isOnlyForPrimark != null">
+        is_only_for_primark = #{isOnlyForPrimark,jdbcType=INTEGER},
+      </if>
+      <if test="subjectId != null">
+        subject_id = #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="sectionId != null">
+        section_id = #{sectionId,jdbcType=INTEGER},
+      </if>
+      <if test="cTime != null">
+        c_time = #{cTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cUserId != null">
+        c_user_id = #{cUserId,jdbcType=INTEGER},
+      </if>
+      <if test="mTime != null">
+        m_time = #{mTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mUserId != null">
+        m_user_id = #{mUserId,jdbcType=INTEGER},
+      </if>
+      <if test="active != null">
+        active = #{active,jdbcType=INTEGER},
+      </if>
+      <if test="ggsTime != null">
+        ggs_time = #{ggsTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ref = #{ref,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.etiantian.entity.VersionInfo">
+    update version_info
+    set version_id = #{versionId,jdbcType=INTEGER},
+      version_name = #{versionName,jdbcType=VARCHAR},
+      old_version_id = #{oldVersionId,jdbcType=INTEGER},
+      cont_desc = #{contDesc,jdbcType=VARCHAR},
+      abbreviation = #{abbreviation,jdbcType=VARCHAR},
+      is_only_for_primark = #{isOnlyForPrimark,jdbcType=INTEGER},
+      subject_id = #{subjectId,jdbcType=INTEGER},
+      section_id = #{sectionId,jdbcType=INTEGER},
+      c_time = #{cTime,jdbcType=TIMESTAMP},
+      c_user_id = #{cUserId,jdbcType=INTEGER},
+      m_time = #{mTime,jdbcType=TIMESTAMP},
+      m_user_id = #{mUserId,jdbcType=INTEGER},
+      active = #{active,jdbcType=INTEGER},
+      ggs_time = #{ggsTime,jdbcType=TIMESTAMP}
+    where ref = #{ref,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.etiantian.entity.VersionInfo">
+    <id column="ref" jdbcType="INTEGER" property="ref" />
+    <result column="version_id" jdbcType="INTEGER" property="versionId" />
+    <result column="version_name" jdbcType="VARCHAR" property="versionName" />
     <result column="cont_desc" jdbcType="VARCHAR" property="contDesc" />
     <result column="abbreviation" jdbcType="VARCHAR" property="abbreviation" />
     <result column="is_only_for_primary" jdbcType="INTEGER" property="isOnlyForPrimary" />

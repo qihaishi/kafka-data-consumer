@@ -9,11 +9,13 @@ public class VersionInfo {
 
     private String versionName;
 
+    private Integer oldVersionId;
+
     private String contDesc;
 
     private String abbreviation;
 
-    private Integer isOnlyForPrimary;
+    private Integer isOnlyForPrimark;
 
     private Integer subjectId;
 
@@ -55,6 +57,14 @@ public class VersionInfo {
         this.versionName = versionName == null ? null : versionName.trim();
     }
 
+    public Integer getOldVersionId() {
+        return oldVersionId;
+    }
+
+    public void setOldVersionId(Integer oldVersionId) {
+        this.oldVersionId = oldVersionId;
+    }
+
     public String getContDesc() {
         return contDesc;
     }
@@ -71,12 +81,12 @@ public class VersionInfo {
         this.abbreviation = abbreviation == null ? null : abbreviation.trim();
     }
 
-    public Integer getIsOnlyForPrimary() {
-        return isOnlyForPrimary;
+    public Integer getIsOnlyForPrimark() {
+        return isOnlyForPrimark;
     }
 
-    public void setIsOnlyForPrimary(Integer isOnlyForPrimary) {
-        this.isOnlyForPrimary = isOnlyForPrimary;
+    public void setIsOnlyForPrimark(Integer isOnlyForPrimark) {
+        this.isOnlyForPrimark = isOnlyForPrimark;
     }
 
     public Integer getSubjectId() {
