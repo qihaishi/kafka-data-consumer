@@ -62,7 +62,7 @@
 
         <table tableName="j_node_question" domainObjectName="JNodeQuestion"></table>
         <table tableName="j_node_question_del" domainObjectName="JNodeQuestionDel"></table>
-        -->
+
         <table tableName="dc_tp_course_info_new" domainObjectName="DcTpCourseInfoNew"></table>
         <table tableName="j_node_resources" domainObjectName="JNodeResources"></table>
         <table tableName="j_node_resources_del" domainObjectName="JNodeResourcesDel"></table>
@@ -77,9 +77,10 @@
 
         <table tableName="j_ab_paper_question" domainObjectName="JAbPaperQuestion"></table>
         <table tableName="j_ab_paper_question_del" domainObjectName="JAbPaperQuestionDel"></table>
-        -->
+
         <table tableName="version_info" domainObjectName="VersionInfo"></table>
         <table tableName="version_info_del" domainObjectName="VersionInfoDel"></table>
+        -->
 
     </context>
 </generatorConfiguration>
