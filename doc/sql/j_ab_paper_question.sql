@@ -15,6 +15,7 @@ create table j_ab_paper_question
    paper_type           char(1) not null comment '试卷类型:A/B',
    question_id          bigint(19) not null comment '试题Id',
    sort                 bigint(2) comment '排序号',
+   is_direct            bigint(2) default 0 comment '是否直属,0:否1:是',
    ggs_time             timestamp not null default CURRENT_TIMESTAMP,
    primary key (ref)
 );
