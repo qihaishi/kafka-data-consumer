@@ -9,6 +9,8 @@ public class VersionInfoDel {
 
     private String versionName;
 
+    private Integer oldVersionId;
+
     private String contDesc;
 
     private String abbreviation;
@@ -53,6 +55,14 @@ public class VersionInfoDel {
 
     public void setVersionName(String versionName) {
         this.versionName = versionName == null ? null : versionName.trim();
+    }
+
+    public Integer getOldVersionId() {
+        return oldVersionId;
+    }
+
+    public void setOldVersionId(Integer oldVersionId) {
+        this.oldVersionId = oldVersionId;
     }
 
     public String getContDesc() {

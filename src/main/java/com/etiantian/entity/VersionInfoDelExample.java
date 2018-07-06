@@ -295,6 +295,66 @@ public class VersionInfoDelExample {
             return (Criteria) this;
         }
 
+        public Criteria andOldVersionIdIsNull() {
+            addCriterion("old_version_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldVersionIdIsNotNull() {
+            addCriterion("old_version_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldVersionIdEqualTo(Integer value) {
+            addCriterion("old_version_id =", value, "oldVersionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldVersionIdNotEqualTo(Integer value) {
+            addCriterion("old_version_id <>", value, "oldVersionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldVersionIdGreaterThan(Integer value) {
+            addCriterion("old_version_id >", value, "oldVersionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldVersionIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("old_version_id >=", value, "oldVersionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldVersionIdLessThan(Integer value) {
+            addCriterion("old_version_id <", value, "oldVersionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldVersionIdLessThanOrEqualTo(Integer value) {
+            addCriterion("old_version_id <=", value, "oldVersionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldVersionIdIn(List<Integer> values) {
+            addCriterion("old_version_id in", values, "oldVersionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldVersionIdNotIn(List<Integer> values) {
+            addCriterion("old_version_id not in", values, "oldVersionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldVersionIdBetween(Integer value1, Integer value2) {
+            addCriterion("old_version_id between", value1, value2, "oldVersionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldVersionIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("old_version_id not between", value1, value2, "oldVersionId");
+            return (Criteria) this;
+        }
+
         public Criteria andContDescIsNull() {
             addCriterion("cont_desc is null");
             return (Criteria) this;
