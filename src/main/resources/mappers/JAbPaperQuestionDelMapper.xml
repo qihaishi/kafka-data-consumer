@@ -8,6 +8,7 @@
     <result column="paper_type" jdbcType="CHAR" property="paperType" />
     <result column="question_id" jdbcType="BIGINT" property="questionId" />
     <result column="sort" jdbcType="BIGINT" property="sort" />
+    <result column="is_direct" jdbcType="BIGINT" property="isDirect" />
     <result column="ggs_time" jdbcType="TIMESTAMP" property="ggsTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    ref, node_id, paper_id, paper_type, question_id, sort, ggs_time
+    ref, node_id, paper_id, paper_type, question_id, sort, is_direct, ggs_time
   </sql>
   <select id="selectByExample" parameterType="com.etiantian.entity.JAbPaperQuestionDelExample" resultMap="BaseResultMap">
     select
@@ -104,10 +105,10 @@
   <insert id="insert" parameterType="com.etiantian.entity.JAbPaperQuestionDel">
     insert into j_ab_paper_question_del (ref, node_id, paper_id, 
       paper_type, question_id, sort, 
-      ggs_time)
+      is_direct, ggs_time)
     values (#{ref,jdbcType=BIGINT}, #{nodeId,jdbcType=BIGINT}, #{paperId,jdbcType=BIGINT}, 
       #{paperType,jdbcType=CHAR}, #{questionId,jdbcType=BIGINT}, #{sort,jdbcType=BIGINT}, 
-      #{ggsTime,jdbcType=TIMESTAMP})
+      #{isDirect,jdbcType=BIGINT}, #{ggsTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.etiantian.entity.JAbPaperQuestionDel">
     insert into j_ab_paper_question_del
@@ -129,6 +130,9 @@
       </if>
       <if test="sort != null">
         sort,
+      </if>
+      <if test="isDirect != null">
+        is_direct,
       </if>
       <if test="ggsTime != null">
         ggs_time,
@@ -152,6 +156,9 @@
       </if>
       <if test="sort != null">
         #{sort,jdbcType=BIGINT},
+      </if>
+      <if test="isDirect != null">
+        #{isDirect,jdbcType=BIGINT},
       </if>
       <if test="ggsTime != null">
         #{ggsTime,jdbcType=TIMESTAMP},
@@ -185,6 +192,9 @@
       <if test="record.sort != null">
         sort = #{record.sort,jdbcType=BIGINT},
       </if>
+      <if test="record.isDirect != null">
+        is_direct = #{record.isDirect,jdbcType=BIGINT},
+      </if>
       <if test="record.ggsTime != null">
         ggs_time = #{record.ggsTime,jdbcType=TIMESTAMP},
       </if>
@@ -201,6 +211,7 @@
       paper_type = #{record.paperType,jdbcType=CHAR},
       question_id = #{record.questionId,jdbcType=BIGINT},
       sort = #{record.sort,jdbcType=BIGINT},
+      is_direct = #{record.isDirect,jdbcType=BIGINT},
       ggs_time = #{record.ggsTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -224,6 +235,9 @@
       <if test="sort != null">
         sort = #{sort,jdbcType=BIGINT},
       </if>
+      <if test="isDirect != null">
+        is_direct = #{isDirect,jdbcType=BIGINT},
+      </if>
       <if test="ggsTime != null">
         ggs_time = #{ggsTime,jdbcType=TIMESTAMP},
       </if>
@@ -237,6 +251,7 @@
       paper_type = #{paperType,jdbcType=CHAR},
       question_id = #{questionId,jdbcType=BIGINT},
       sort = #{sort,jdbcType=BIGINT},
+      is_direct = #{isDirect,jdbcType=BIGINT},
       ggs_time = #{ggsTime,jdbcType=TIMESTAMP}
     where ref = #{ref,jdbcType=BIGINT}
   </update>

@@ -81,6 +81,8 @@
         <table tableName="version_info" domainObjectName="VersionInfo"></table>
         <table tableName="version_info_del" domainObjectName="VersionInfoDel"></table>
         -->
+        <table tableName="j_ab_paper_question" domainObjectName="JAbPaperQuestion_"></table>
+        <table tableName="j_ab_paper_question_del" domainObjectName="JAbPaperQuestionDel_"></table>
 
     </context>
 </generatorConfiguration>
