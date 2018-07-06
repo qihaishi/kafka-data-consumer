@@ -61,6 +61,8 @@
                 <value>dc_tp_course_info_new</value>
                 <value>j_material_node_info</value>
                 <value>j_material_node_info_del</value>
+                <value>j_node_question</value>
+                <value>j_node_question_del</value>
             </array>
         </constructor-arg>
     </bean>
