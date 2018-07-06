@@ -475,6 +475,66 @@ public class JAbPaperQuestionDelExample {
             return (Criteria) this;
         }
 
+        public Criteria andIsDirectIsNull() {
+            addCriterion("is_direct is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDirectIsNotNull() {
+            addCriterion("is_direct is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDirectEqualTo(Long value) {
+            addCriterion("is_direct =", value, "isDirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDirectNotEqualTo(Long value) {
+            addCriterion("is_direct <>", value, "isDirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDirectGreaterThan(Long value) {
+            addCriterion("is_direct >", value, "isDirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDirectGreaterThanOrEqualTo(Long value) {
+            addCriterion("is_direct >=", value, "isDirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDirectLessThan(Long value) {
+            addCriterion("is_direct <", value, "isDirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDirectLessThanOrEqualTo(Long value) {
+            addCriterion("is_direct <=", value, "isDirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDirectIn(List<Long> values) {
+            addCriterion("is_direct in", values, "isDirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDirectNotIn(List<Long> values) {
+            addCriterion("is_direct not in", values, "isDirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDirectBetween(Long value1, Long value2) {
+            addCriterion("is_direct between", value1, value2, "isDirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDirectNotBetween(Long value1, Long value2) {
+            addCriterion("is_direct not between", value1, value2, "isDirect");
+            return (Criteria) this;
+        }
+
         public Criteria andGgsTimeIsNull() {
             addCriterion("ggs_time is null");
             return (Criteria) this;

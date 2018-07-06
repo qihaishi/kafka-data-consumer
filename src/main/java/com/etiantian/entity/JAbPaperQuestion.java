@@ -15,6 +15,8 @@ public class JAbPaperQuestion {
 
     private Long sort;
 
+    private Long isDirect;
+
     private Date ggsTime;
 
     public Long getRef() {
@@ -63,6 +65,14 @@ public class JAbPaperQuestion {
 
     public void setSort(Long sort) {
         this.sort = sort;
+    }
+
+    public Long getIsDirect() {
+        return isDirect;
+    }
+
+    public void setIsDirect(Long isDirect) {
+        this.isDirect = isDirect;
     }
 
     public Date getGgsTime() {
