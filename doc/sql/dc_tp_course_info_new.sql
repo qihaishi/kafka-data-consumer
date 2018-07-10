@@ -17,4 +17,4 @@ CREATE TABLE `dc_tp_course_info_new` (
   PRIMARY KEY (`course_id`),
   KEY `idx_course_id` (`course_id`),
   KEY `idx_node_id` (`res_pkg_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1000100001 DEFAULT CHARSET=gbk
+) ENGINE=InnoDB AUTO_INCREMENT=1000100001 DEFAULT CHARSET=utf8

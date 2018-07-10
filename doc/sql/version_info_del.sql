@@ -19,4 +19,4 @@ CREATE TABLE `version_info_del` (
   KEY `idx_subject_id` (`subject_id`),
   KEY `idx_old_vid` (`old_version_id`),
   KEY `idx_section_id` (`section_id`)
-) ENGINE=INNODB DEFAULT CHARSET=gbk
+) ENGINE=INNODB DEFAULT CHARSET=utf8

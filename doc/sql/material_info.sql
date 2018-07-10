@@ -19,7 +19,7 @@ create table material_info
    ggs_time             timestamp not null default CURRENT_TIMESTAMP comment '同步时间',
    primary key (ref),
    key ak_material_id (id)
-)ENGINE=InnoDB DEFAULT CHARSET=gbk;
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 alter table material_info comment '教材信息表';
 
