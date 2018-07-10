@@ -1,14 +1,8 @@
 
-drop index idx_dir_id on oragbk.j_node_resources_del;
-
-drop index idx_res_id on oragbk.j_node_resources_del;
-
-drop table if exists oragbk.j_node_resources_del;
-
 /*==============================================================*/
 /* Table: j_node_resources_del                                  */
 /*==============================================================*/
-create table oragbk.j_node_resources_del
+create table j_node_resources_del
 (
    ref                  bigint(19) not null auto_increment,
    resource_id          bigint(19) not null,
@@ -24,12 +18,12 @@ create table oragbk.j_node_resources_del
    primary key (ref)
 );
 
-alter table oragbk.j_node_resources_del comment '节点和资源关系表';
+alter table j_node_resources_del comment '节点和资源关系表';
 
 /*==============================================================*/
 /* Index: idx_res_id                                            */
 /*==============================================================*/
-create index idx_res_id on oragbk.j_node_resources_del
+create index idx_res_id on j_node_resources_del
 (
    resource_id
 );
@@ -37,7 +31,7 @@ create index idx_res_id on oragbk.j_node_resources_del
 /*==============================================================*/
 /* Index: idx_dir_id                                            */
 /*==============================================================*/
-create index idx_dir_id on oragbk.j_node_resources_del
+create index idx_dir_id on j_node_resources_del
 (
    dir_id
 );

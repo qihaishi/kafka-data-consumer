@@ -12,7 +12,9 @@ create table j_node_question
    m_time               datetime comment '修改时间',
    m_user_id            bigint(19) comment '修改人',
    ggs_time             TIMESTAMP not null default  CURRENT_TIMESTAMP comment '同步时间',
-   primary key (ref)
+   primary key (ref),
+   KEY `idx_ques_id` (`question_id`),
+   KEY `idx_node_id` (`node_id`)
 );
 
 alter table j_node_question comment '节点试题关系表';

@@ -9,7 +9,7 @@ drop table if exists oragbk.j_node_resources;
 /*==============================================================*/
 /* Table: j_node_resources                                      */
 /*==============================================================*/
-create table oragbk.j_node_resources
+create table j_node_resources
 (
    ref                  bigint(19) not null auto_increment,
    resource_id          bigint(19) not null,
@@ -25,12 +25,12 @@ create table oragbk.j_node_resources
    primary key (ref)
 );
 
-alter table oragbk.j_node_resources comment '节点和资源关系表';
+alter table j_node_resources comment '节点和资源关系表';
 
 /*==============================================================*/
 /* Index: idx_res_id                                            */
 /*==============================================================*/
-create index idx_res_id on oragbk.j_node_resources
+create index idx_res_id on j_node_resources
 (
    resource_id
 );
@@ -38,7 +38,7 @@ create index idx_res_id on oragbk.j_node_resources
 /*==============================================================*/
 /* Index: idx_dir_id                                            */
 /*==============================================================*/
-create index idx_dir_id on oragbk.j_node_resources
+create index idx_dir_id on j_node_resources
 (
    dir_id
 );
