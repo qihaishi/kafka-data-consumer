@@ -9,6 +9,7 @@
     <result column="node_id" jdbcType="BIGINT" property="nodeId" />
     <result column="node_level" jdbcType="INTEGER" property="nodeLevel" />
     <result column="question_id" jdbcType="BIGINT" property="questionId" />
+    <result column="is_direct" jdbcType="INTEGER" property="isDirect" />
     <result column="c_time" jdbcType="TIMESTAMP" property="cTime" />
     <result column="c_user_id" jdbcType="BIGINT" property="cUserId" />
     <result column="m_time" jdbcType="TIMESTAMP" property="mTime" />
@@ -74,8 +75,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    ref, section_id, subject_id, version_id, node_id, node_level, question_id, c_time, 
-    c_user_id, m_time, m_user_id, ggs_time
+    ref, section_id, subject_id, version_id, node_id, node_level, question_id, is_direct, 
+    c_time, c_user_id, m_time, m_user_id, ggs_time
   </sql>
   <select id="selectByExample" parameterType="com.etiantian.entity.JNodeQuestionDelExample" resultMap="BaseResultMap">
     select
@@ -110,14 +111,14 @@
   <insert id="insert" parameterType="com.etiantian.entity.JNodeQuestionDel">
     insert into j_node_question_del (ref, section_id, subject_id, 
       version_id, node_id, node_level, 
-      question_id, c_time, c_user_id, 
-      m_time, m_user_id, ggs_time
-      )
+      question_id, is_direct, c_time, 
+      c_user_id, m_time, m_user_id, 
+      ggs_time)
     values (#{ref,jdbcType=BIGINT}, #{sectionId,jdbcType=INTEGER}, #{subjectId,jdbcType=INTEGER}, 
       #{versionId,jdbcType=INTEGER}, #{nodeId,jdbcType=BIGINT}, #{nodeLevel,jdbcType=INTEGER}, 
-      #{questionId,jdbcType=BIGINT}, #{cTime,jdbcType=TIMESTAMP}, #{cUserId,jdbcType=BIGINT}, 
-      #{mTime,jdbcType=TIMESTAMP}, #{mUserId,jdbcType=BIGINT}, #{ggsTime,jdbcType=TIMESTAMP}
-      )
+      #{questionId,jdbcType=BIGINT}, #{isDirect,jdbcType=INTEGER}, #{cTime,jdbcType=TIMESTAMP}, 
+      #{cUserId,jdbcType=BIGINT}, #{mTime,jdbcType=TIMESTAMP}, #{mUserId,jdbcType=BIGINT}, 
+      #{ggsTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.etiantian.entity.JNodeQuestionDel">
     insert into j_node_question_del
@@ -142,6 +143,9 @@
       </if>
       <if test="questionId != null">
         question_id,
+      </if>
+      <if test="isDirect != null">
+        is_direct,
       </if>
       <if test="cTime != null">
         c_time,
@@ -180,6 +184,9 @@
       </if>
       <if test="questionId != null">
         #{questionId,jdbcType=BIGINT},
+      </if>
+      <if test="isDirect != null">
+        #{isDirect,jdbcType=INTEGER},
       </if>
       <if test="cTime != null">
         #{cTime,jdbcType=TIMESTAMP},
@@ -228,6 +235,9 @@
       <if test="record.questionId != null">
         question_id = #{record.questionId,jdbcType=BIGINT},
       </if>
+      <if test="record.isDirect != null">
+        is_direct = #{record.isDirect,jdbcType=INTEGER},
+      </if>
       <if test="record.cTime != null">
         c_time = #{record.cTime,jdbcType=TIMESTAMP},
       </if>
@@ -257,6 +267,7 @@
       node_id = #{record.nodeId,jdbcType=BIGINT},
       node_level = #{record.nodeLevel,jdbcType=INTEGER},
       question_id = #{record.questionId,jdbcType=BIGINT},
+      is_direct = #{record.isDirect,jdbcType=INTEGER},
       c_time = #{record.cTime,jdbcType=TIMESTAMP},
       c_user_id = #{record.cUserId,jdbcType=BIGINT},
       m_time = #{record.mTime,jdbcType=TIMESTAMP},
@@ -287,6 +298,9 @@
       <if test="questionId != null">
         question_id = #{questionId,jdbcType=BIGINT},
       </if>
+      <if test="isDirect != null">
+        is_direct = #{isDirect,jdbcType=INTEGER},
+      </if>
       <if test="cTime != null">
         c_time = #{cTime,jdbcType=TIMESTAMP},
       </if>
@@ -313,6 +327,7 @@
       node_id = #{nodeId,jdbcType=BIGINT},
       node_level = #{nodeLevel,jdbcType=INTEGER},
       question_id = #{questionId,jdbcType=BIGINT},
+      is_direct = #{isDirect,jdbcType=INTEGER},
       c_time = #{cTime,jdbcType=TIMESTAMP},
       c_user_id = #{cUserId,jdbcType=BIGINT},
       m_time = #{mTime,jdbcType=TIMESTAMP},

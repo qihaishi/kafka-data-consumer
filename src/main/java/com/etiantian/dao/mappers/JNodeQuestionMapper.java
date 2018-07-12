@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-
 @Component("jNodeQuestionMapper")
 public interface JNodeQuestionMapper {
     int countByExample(JNodeQuestionExample example);
