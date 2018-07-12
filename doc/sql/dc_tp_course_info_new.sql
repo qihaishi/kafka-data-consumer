@@ -16,5 +16,7 @@ CREATE TABLE `dc_tp_course_info_new` (
   `ggs_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`course_id`),
   KEY `idx_course_id` (`course_id`),
-  KEY `idx_node_id` (`res_pkg_id`)
+  KEY `idx_node_id` (`res_pkg_id`),
+   KEY `idx_parent_id` (`parent_id`),
+  KEY `idx_root_id` (`root_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1000100001 DEFAULT CHARSET=utf8
