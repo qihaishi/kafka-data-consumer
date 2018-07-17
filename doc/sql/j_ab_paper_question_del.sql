@@ -17,23 +17,9 @@ create table j_ab_paper_question_del
    sort                 bigint(2) comment '排序号',
    is_direct            bigint(2) default 0 comment '是否直属,0:否1:是',
    ggs_time             timestamp not null default CURRENT_TIMESTAMP,
-   primary key (ref)
-);
-
-alter table j_ab_paper_question_del comment '节点,ab卷和试题关系表';
-
-/*==============================================================*/
-/* Index: IDX_J_AB_PAPER_QUESTION_GGS_TIME                      */
-/*==============================================================*/
-create index IDX_J_AB_PAPER_QUESTION_GGS_TIME on j_ab_paper_question_del
-(
-   ggs_time
-);
-
-/*==============================================================*/
-/* Index: IDX_J_AB_PAPER_QUESTION_PAPER_ID                      */
-/*==============================================================*/
-create index IDX_J_AB_PAPER_QUESTION_PAPER_ID on j_ab_paper_question_del
-(
-   paper_id
-);
+   primary key (ref),
+   KEY `IDX_J_AB_PAPER_QUESTION_GGS_TIME` (`ggs_time`),
+   KEY `IDX_J_AB_PAPER_QUESTION_PAPER_ID` (`paper_id`),
+   KEY `IDX_J_AB_PAPER_QUESTION_NODE_ID` (`node_id`),
+   KEY `IDX_J_AB_PAPER_QUESTION_QUES_ID` (`question_id`)
+) comment '节点,ab卷和试题关系表';

@@ -13,7 +13,9 @@ create table j_material_node_info_del
    list_dir_name        varchar(256) comment '节点名称',
    order_id             int(5) comment '排序号',
    ggs_time             timestamp not null default CURRENT_TIMESTAMP,
-   primary key (ref)
+   primary key (ref),
+   KEY `idx_list_id` (`list_id`),
+   KEY `idx_dir_id` (`dir_id`)
 );
 
 alter table j_material_node_info_del comment '教材和章节目录关系表';
