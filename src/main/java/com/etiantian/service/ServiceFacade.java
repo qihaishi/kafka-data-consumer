@@ -9,9 +9,7 @@ import org.springframework.util.StringUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Iterator;
 
 /**
@@ -187,7 +185,7 @@ public class ServiceFacade {
         return false;
     }
 
-    public static void main(String[] args) {
+  /*  public static void main(String[] args) {
         System.out.println("92044".hashCode() % 1);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd  HH:mm:ss");
         Date parse = null;
@@ -197,7 +195,7 @@ public class ServiceFacade {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
 
     public void doService(String topicName, JSONObject json) {
