@@ -17,6 +17,8 @@ public class JNodeQuestion {
 
     private Long questionId;
 
+    private Integer isDirect;
+
     private Date cTime;
 
     private Long cUserId;
@@ -81,6 +83,14 @@ public class JNodeQuestion {
 
     public void setQuestionId(Long questionId) {
         this.questionId = questionId;
+    }
+
+    public Integer getIsDirect() {
+        return isDirect;
+    }
+
+    public void setIsDirect(Integer isDirect) {
+        this.isDirect = isDirect;
     }
 
     public Date getcTime() {

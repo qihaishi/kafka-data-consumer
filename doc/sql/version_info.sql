@@ -19,4 +19,4 @@ CREATE TABLE `version_info` (
   KEY `idx_subject_id` (`subject_id`),
   KEY `idx_old_vid` (`old_version_id`),
   KEY `idx_section_id` (`section_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=gbk
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
