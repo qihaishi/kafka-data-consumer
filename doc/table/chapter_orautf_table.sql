@@ -2,7 +2,8 @@
 SQLyog Ultimate v11.42 (64 bit)
 MySQL - 5.5.56 : Database - orautf
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -49,23 +50,27 @@ CREATE TABLE `j_ab_paper_question` (
   `ggs_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ref`),
   KEY `IDX_J_AB_PAPER_QUESTION_GGS_TIME` (`ggs_time`),
-  KEY `IDX_J_AB_PAPER_QUESTION_PAPER_ID` (`paper_id`)
+  KEY `IDX_J_AB_PAPER_QUESTION_PAPER_ID` (`paper_id`),
+  KEY `IDX_J_AB_PAPER_QUESTION_NODE_ID` (`node_id`),
+  KEY `IDX_J_AB_PAPER_QUESTION_QUES_ID` (`question_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='节点,ab卷和试题关系表';
 
 /*Table structure for table `j_ab_paper_question_del` */
 
 CREATE TABLE `j_ab_paper_question_del` (
-  `ref` bigint(19) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
-  `node_id` bigint(19) NOT NULL COMMENT '节点id',
-  `paper_id` bigint(19) NOT NULL COMMENT '节点id',
-  `paper_type` char(1) NOT NULL COMMENT '试卷类型:A/B',
-  `question_id` bigint(19) NOT NULL COMMENT '试题Id',
-  `sort` bigint(2) DEFAULT NULL COMMENT '排序号',
-  `is_direct` bigint(2) DEFAULT '0' COMMENT '是否直属,0:否1:是',
-  `ggs_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`ref`),
-  KEY `IDX_J_AB_PAPER_QUESTION_GGS_TIME` (`ggs_time`),
-  KEY `IDX_J_AB_PAPER_QUESTION_PAPER_ID` (`paper_id`)
+   ref                  bigint(19) not null auto_increment comment '自增主键',
+   node_id              bigint(19) not null comment '节点id',
+   paper_id             bigint(19) not null comment '节点id',
+   paper_type           char(1) not null comment '试卷类型:A/B',
+   question_id          bigint(19) not null comment '试题Id',
+   sort                 bigint(2) comment '排序号',
+   is_direct            bigint(2) default 0 comment '是否直属,0:否1:是',
+   ggs_time             timestamp not null default CURRENT_TIMESTAMP,
+   primary key (ref),
+   KEY `IDX_J_AB_PAPER_QUESTION_GGS_TIME` (`ggs_time`),
+   KEY `IDX_J_AB_PAPER_QUESTION_PAPER_ID` (`paper_id`),
+   KEY `IDX_J_AB_PAPER_QUESTION_NODE_ID` (`node_id`),
+   KEY `IDX_J_AB_PAPER_QUESTION_QUES_ID` (`question_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='节点,ab卷和试题关系表';
 
 /*Table structure for table `j_material_node_info` */
@@ -78,20 +83,23 @@ CREATE TABLE `j_material_node_info` (
   `order_id` int(5) DEFAULT NULL COMMENT '排序号',
   `ggs_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ref`),
-  KEY `IDX_J_MATERIAL_NODE_INFO_GGS_TIME` (`ggs_time`)
+  KEY `IDX_J_MATERIAL_NODE_INFO_GGS_TIME` (`ggs_time`),
+  KEY `idx_list_id` (`list_id`),
+  KEY `idx_dir_id` (`dir_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='教材和章节目录关系表';
 
 /*Table structure for table `j_material_node_info_del` */
 
 CREATE TABLE `j_material_node_info_del` (
-  `ref` bigint(19) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
-  `list_id` bigint(19) NOT NULL COMMENT '教材Id',
-  `dir_id` bigint(19) NOT NULL COMMENT '节点id',
-  `list_dir_name` varchar(256) DEFAULT NULL COMMENT '节点名称',
-  `order_id` int(5) DEFAULT NULL COMMENT '排序号',
-  `ggs_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`ref`),
-  KEY `IDX_J_MATERIAL_NODE_INFO_GGS_TIME` (`ggs_time`)
+   ref                  bigint(19) not null auto_increment comment '自增主键',
+   list_id              bigint(19) not null comment '教材Id',
+   dir_id               bigint(19) not null comment '节点id',
+   list_dir_name        varchar(256) comment '节点名称',
+   order_id             int(5) comment '排序号',
+   ggs_time             timestamp not null default CURRENT_TIMESTAMP,
+   primary key (ref),
+   KEY `idx_list_id` (`list_id`),
+   KEY `idx_dir_id` (`dir_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='教材和章节目录关系表';
 
 /*Table structure for table `j_micro_course_resource` */
