@@ -9,7 +9,9 @@ import org.springframework.util.StringUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 
 /**
@@ -74,12 +76,12 @@ public class ServiceFacade {
      * @throws InvocationTargetException
      * @throws IllegalAccessException
      */
-    public static <T> void setParamsByRulesJson(T t, JSONObject json) throws Exception {
+    public static <T> void setParamsByRulesJson(T t, JSONObject json,boolean filterCime) throws Exception {
         if (json.has("query")) {
-            setParamsByJson(t, (JSONObject) json.get("query"));
+            setParamsByJson(t, (JSONObject) json.get("query"),false);
         }
         if (json.has("update")) {
-            setParamsByJson(t, (JSONObject) json.get("update"));
+            setParamsByJson(t, (JSONObject) json.get("update"),filterCime);
         }
     }
 
@@ -101,12 +103,14 @@ public class ServiceFacade {
         return true;
     }
 
-    public static <T> void setParamsByJson(T t, JSONObject json) throws Exception {
+    public static <T> void setParamsByJson(T t, JSONObject json,boolean filterCtime) throws Exception {
         Iterator<String> it = json.keys();
         while (it.hasNext()) {
             String key = it.next();
+            if(filterCtime && (key.equalsIgnoreCase("c_time") || key.equalsIgnoreCase("ctime"))){
+                continue;
+            }
             Object value = json.get(key);
-
             timeOperate(t, key, value);
         }
     }
@@ -183,33 +187,17 @@ public class ServiceFacade {
         return false;
     }
 
- /*   public static void main(String[] args) {
-        String str = "ggsTime";
-        System.out.println(notNeedConvert(str));
-
-        String str1 = "c_user_id";
-        System.out.println(notNeedConvert(str1));
-
-        JSONObject json = new JSONObject();
-        JSONObject query = new JSONObject();
-        JSONObject update = new JSONObject();
-        query.put("resource_id", 1);
-        query.put("dir_id", 1);
-        update.put("c_time", "2018-07-02 18:30:37");
-
-        json.put("query",query);
-        json.put("update",update);
-
-
-        JNodeResources jNodeResources = new JNodeResources();
+    public static void main(String[] args) {
+        System.out.println("92044".hashCode() % 1);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd  HH:mm:ss");
+        Date parse = null;
         try {
-            timeOperate(jNodeResources, "c_time", "2018-07-02 18:30:37");
-
-        } catch (Exception e) {
+            parse = simpleDateFormat.parse("2003-9-5 14:26:00");
+            System.out.println(parse);
+        } catch (ParseException e) {
             e.printStackTrace();
         }
     }
-*/
 
 
     public void doService(String topicName, JSONObject json) {
@@ -226,7 +214,7 @@ public class ServiceFacade {
             String entityClassName = "com.etiantian.entity." + toFirstUpperCase(entityName);
             Class entityClazz = Class.forName(entityClassName);
             Object entity = entityClazz.newInstance();
-            setParamsByRulesJson(entity, json);
+            setParamsByRulesJson(entity, json,false);
 
             // get example obj
             String exampleClassName = entityClassName + "Example";
