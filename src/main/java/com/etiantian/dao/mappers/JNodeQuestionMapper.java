@@ -2,11 +2,9 @@ package com.etiantian.dao.mappers;
 
 import com.etiantian.entity.JNodeQuestion;
 import com.etiantian.entity.JNodeQuestionExample;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
-
 import java.util.List;
-@Component("jNodeQuestionMapper")
+import org.apache.ibatis.annotations.Param;
+
 public interface JNodeQuestionMapper {
     int countByExample(JNodeQuestionExample example);
 

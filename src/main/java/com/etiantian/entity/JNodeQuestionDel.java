@@ -19,6 +19,8 @@ public class JNodeQuestionDel {
 
     private Integer isDirect;
 
+    private Integer subjectType;
+
     private Date cTime;
 
     private Long cUserId;
@@ -91,6 +93,14 @@ public class JNodeQuestionDel {
 
     public void setIsDirect(Integer isDirect) {
         this.isDirect = isDirect;
+    }
+
+    public Integer getSubjectType() {
+        return subjectType;
+    }
+
+    public void setSubjectType(Integer subjectType) {
+        this.subjectType = subjectType;
     }
 
     public Date getcTime() {

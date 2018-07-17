@@ -8,6 +8,7 @@ create table j_node_question_del
    node_level           int(5) not null comment '知识点层级',
    question_id          bigint(19) not null comment '试题ID',
    is_direct            INT(1) NOT NULL DEFAULT 0 COMMENT '1：直属',
+   subject_type         INT(5) comment '文理标记 -1=文；1=理；0=通用',
    c_time               datetime not null comment '创建时间',
    c_user_id            bigint(19) comment '创建人',
    m_time               datetime comment '修改时间',
