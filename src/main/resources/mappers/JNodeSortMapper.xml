@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.etiantian.dao.mappers.JNodeSortMapper">
+  <resultMap id="BaseResultMap" type="com.etiantian.entity.JNodeSort">
+    <id column="ref" jdbcType="BIGINT" property="ref" />
+    <result column="section_id" jdbcType="INTEGER" property="sectionId" />
+    <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
+    <result column="version_id" jdbcType="INTEGER" property="versionId" />
+    <result column="grade_id" jdbcType="INTEGER" property="gradeId" />
+    <result column="material_id" jdbcType="BIGINT" property="materialId" />
+    <result column="node_id" jdbcType="BIGINT" property="nodeId" />
+    <result column="node_sort_num" jdbcType="INTEGER" property="nodeSortNum" />
+    <result column="node_level" jdbcType="INTEGER" property="nodeLevel" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="root_id" jdbcType="BIGINT" property="rootId" />
+    <result column="node_path" jdbcType="VARCHAR" property="nodePath" />
+    <result column="c_time" jdbcType="TIMESTAMP" property="cTime" />
+    <result column="c_user_id" jdbcType="BIGINT" property="cUserId" />
+    <result column="m_time" jdbcType="TIMESTAMP" property="mTime" />
+    <result column="m_user_id" jdbcType="BIGINT" property="mUserId" />
+    <result column="ggs_time" jdbcType="TIMESTAMP" property="ggsTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ref, section_id, subject_id, version_id, grade_id, material_id, node_id, node_sort_num, 
+    node_level, parent_id, root_id, node_path, c_time, c_user_id, m_time, m_user_id, 
+    ggs_time
+  </sql>
+  <select id="selectByExample" parameterType="com.etiantian.entity.JNodeSortExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from j_node_sort
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from j_node_sort
+    where ref = #{ref,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from j_node_sort
+    where ref = #{ref,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.etiantian.entity.JNodeSortExample">
+    delete from j_node_sort
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.etiantian.entity.JNodeSort">
+    insert into j_node_sort (ref, section_id, subject_id, 
+      version_id, grade_id, material_id, 
+      node_id, node_sort_num, node_level, 
+      parent_id, root_id, node_path, 
+      c_time, c_user_id, m_time, 
+      m_user_id, ggs_time)
+    values (#{ref,jdbcType=BIGINT}, #{sectionId,jdbcType=INTEGER}, #{subjectId,jdbcType=INTEGER}, 
+      #{versionId,jdbcType=INTEGER}, #{gradeId,jdbcType=INTEGER}, #{materialId,jdbcType=BIGINT}, 
+      #{nodeId,jdbcType=BIGINT}, #{nodeSortNum,jdbcType=INTEGER}, #{nodeLevel,jdbcType=INTEGER}, 
+      #{parentId,jdbcType=BIGINT}, #{rootId,jdbcType=BIGINT}, #{nodePath,jdbcType=VARCHAR}, 
+      #{cTime,jdbcType=TIMESTAMP}, #{cUserId,jdbcType=BIGINT}, #{mTime,jdbcType=TIMESTAMP}, 
+      #{mUserId,jdbcType=BIGINT}, #{ggsTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.etiantian.entity.JNodeSort">
+    insert into j_node_sort
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ref != null">
+        ref,
+      </if>
+      <if test="sectionId != null">
+        section_id,
+      </if>
+      <if test="subjectId != null">
+        subject_id,
+      </if>
+      <if test="versionId != null">
+        version_id,
+      </if>
+      <if test="gradeId != null">
+        grade_id,
+      </if>
+      <if test="materialId != null">
+        material_id,
+      </if>
+      <if test="nodeId != null">
+        node_id,
+      </if>
+      <if test="nodeSortNum != null">
+        node_sort_num,
+      </if>
+      <if test="nodeLevel != null">
+        node_level,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="rootId != null">
+        root_id,
+      </if>
+      <if test="nodePath != null">
+        node_path,
+      </if>
+      <if test="cTime != null">
+        c_time,
+      </if>
+      <if test="cUserId != null">
+        c_user_id,
+      </if>
+      <if test="mTime != null">
+        m_time,
+      </if>
+      <if test="mUserId != null">
+        m_user_id,
+      </if>
+      <if test="ggsTime != null">
+        ggs_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ref != null">
+        #{ref,jdbcType=BIGINT},
+      </if>
+      <if test="sectionId != null">
+        #{sectionId,jdbcType=INTEGER},
+      </if>
+      <if test="subjectId != null">
+        #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="versionId != null">
+        #{versionId,jdbcType=INTEGER},
+      </if>
+      <if test="gradeId != null">
+        #{gradeId,jdbcType=INTEGER},
+      </if>
+      <if test="materialId != null">
+        #{materialId,jdbcType=BIGINT},
+      </if>
+      <if test="nodeId != null">
+        #{nodeId,jdbcType=BIGINT},
+      </if>
+      <if test="nodeSortNum != null">
+        #{nodeSortNum,jdbcType=INTEGER},
+      </if>
+      <if test="nodeLevel != null">
+        #{nodeLevel,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="rootId != null">
+        #{rootId,jdbcType=BIGINT},
+      </if>
+      <if test="nodePath != null">
+        #{nodePath,jdbcType=VARCHAR},
+      </if>
+      <if test="cTime != null">
+        #{cTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cUserId != null">
+        #{cUserId,jdbcType=BIGINT},
+      </if>
+      <if test="mTime != null">
+        #{mTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mUserId != null">
+        #{mUserId,jdbcType=BIGINT},
+      </if>
+      <if test="ggsTime != null">
+        #{ggsTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.etiantian.entity.JNodeSortExample" resultType="java.lang.Integer">
+    select count(*) from j_node_sort
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update j_node_sort
+    <set>
+      <if test="record.ref != null">
+        ref = #{record.ref,jdbcType=BIGINT},
+      </if>
+      <if test="record.sectionId != null">
+        section_id = #{record.sectionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.subjectId != null">
+        subject_id = #{record.subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="record.versionId != null">
+        version_id = #{record.versionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.gradeId != null">
+        grade_id = #{record.gradeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.materialId != null">
+        material_id = #{record.materialId,jdbcType=BIGINT},
+      </if>
+      <if test="record.nodeId != null">
+        node_id = #{record.nodeId,jdbcType=BIGINT},
+      </if>
+      <if test="record.nodeSortNum != null">
+        node_sort_num = #{record.nodeSortNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.nodeLevel != null">
+        node_level = #{record.nodeLevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.parentId != null">
+        parent_id = #{record.parentId,jdbcType=BIGINT},
+      </if>
+      <if test="record.rootId != null">
+        root_id = #{record.rootId,jdbcType=BIGINT},
+      </if>
+      <if test="record.nodePath != null">
+        node_path = #{record.nodePath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cTime != null">
+        c_time = #{record.cTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cUserId != null">
+        c_user_id = #{record.cUserId,jdbcType=BIGINT},
+      </if>
+      <if test="record.mTime != null">
+        m_time = #{record.mTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mUserId != null">
+        m_user_id = #{record.mUserId,jdbcType=BIGINT},
+      </if>
+      <if test="record.ggsTime != null">
+        ggs_time = #{record.ggsTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update j_node_sort
+    set ref = #{record.ref,jdbcType=BIGINT},
+      section_id = #{record.sectionId,jdbcType=INTEGER},
+      subject_id = #{record.subjectId,jdbcType=INTEGER},
+      version_id = #{record.versionId,jdbcType=INTEGER},
+      grade_id = #{record.gradeId,jdbcType=INTEGER},
+      material_id = #{record.materialId,jdbcType=BIGINT},
+      node_id = #{record.nodeId,jdbcType=BIGINT},
+      node_sort_num = #{record.nodeSortNum,jdbcType=INTEGER},
+      node_level = #{record.nodeLevel,jdbcType=INTEGER},
+      parent_id = #{record.parentId,jdbcType=BIGINT},
+      root_id = #{record.rootId,jdbcType=BIGINT},
+      node_path = #{record.nodePath,jdbcType=VARCHAR},
+      c_time = #{record.cTime,jdbcType=TIMESTAMP},
+      c_user_id = #{record.cUserId,jdbcType=BIGINT},
+      m_time = #{record.mTime,jdbcType=TIMESTAMP},
+      m_user_id = #{record.mUserId,jdbcType=BIGINT},
+      ggs_time = #{record.ggsTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.etiantian.entity.JNodeSort">
+    update j_node_sort
+    <set>
+      <if test="sectionId != null">
+        section_id = #{sectionId,jdbcType=INTEGER},
+      </if>
+      <if test="subjectId != null">
+        subject_id = #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="versionId != null">
+        version_id = #{versionId,jdbcType=INTEGER},
+      </if>
+      <if test="gradeId != null">
+        grade_id = #{gradeId,jdbcType=INTEGER},
+      </if>
+      <if test="materialId != null">
+        material_id = #{materialId,jdbcType=BIGINT},
+      </if>
+      <if test="nodeId != null">
+        node_id = #{nodeId,jdbcType=BIGINT},
+      </if>
+      <if test="nodeSortNum != null">
+        node_sort_num = #{nodeSortNum,jdbcType=INTEGER},
+      </if>
+      <if test="nodeLevel != null">
+        node_level = #{nodeLevel,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="rootId != null">
+        root_id = #{rootId,jdbcType=BIGINT},
+      </if>
+      <if test="nodePath != null">
+        node_path = #{nodePath,jdbcType=VARCHAR},
+      </if>
+      <if test="cTime != null">
+        c_time = #{cTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cUserId != null">
+        c_user_id = #{cUserId,jdbcType=BIGINT},
+      </if>
+      <if test="mTime != null">
+        m_time = #{mTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mUserId != null">
+        m_user_id = #{mUserId,jdbcType=BIGINT},
+      </if>
+      <if test="ggsTime != null">
+        ggs_time = #{ggsTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ref = #{ref,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.etiantian.entity.JNodeSort">
+    update j_node_sort
+    set section_id = #{sectionId,jdbcType=INTEGER},
+      subject_id = #{subjectId,jdbcType=INTEGER},
+      version_id = #{versionId,jdbcType=INTEGER},
+      grade_id = #{gradeId,jdbcType=INTEGER},
+      material_id = #{materialId,jdbcType=BIGINT},
+      node_id = #{nodeId,jdbcType=BIGINT},
+      node_sort_num = #{nodeSortNum,jdbcType=INTEGER},
+      node_level = #{nodeLevel,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=BIGINT},
+      root_id = #{rootId,jdbcType=BIGINT},
+      node_path = #{nodePath,jdbcType=VARCHAR},
+      c_time = #{cTime,jdbcType=TIMESTAMP},
+      c_user_id = #{cUserId,jdbcType=BIGINT},
+      m_time = #{mTime,jdbcType=TIMESTAMP},
+      m_user_id = #{mUserId,jdbcType=BIGINT},
+      ggs_time = #{ggsTime,jdbcType=TIMESTAMP}
+    where ref = #{ref,jdbcType=BIGINT}
+  </update>
+</mapper>

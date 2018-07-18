@@ -81,9 +81,13 @@
 
         <table tableName="j_ab_paper_question" domainObjectName="JAbPaperQuestion_"></table>
         <table tableName="j_ab_paper_question_del" domainObjectName="JAbPaperQuestionDel_"></table>
-        -->
+
         <table tableName="j_node_question" domainObjectName="JNodeQuestion"></table>
         <table tableName="j_node_question_del" domainObjectName="JNodeQuestionDel"></table>
+        -->
+
+        <table tableName="j_node_sort" domainObjectName="JNodeSort"></table>
+        <table tableName="j_node_sort_del" domainObjectName="JNodeSortDel"></table>
 
 
     </context>
