@@ -2,9 +2,12 @@ package com.etiantian.dao.mappers;
 
 import com.etiantian.entity.JNodeSort;
 import com.etiantian.entity.JNodeSortExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+
+@Component("jNodeSortMapper")
 public interface JNodeSortMapper {
     int countByExample(JNodeSortExample example);
 

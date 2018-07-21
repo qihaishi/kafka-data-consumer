@@ -201,6 +201,7 @@ public class ServiceFacade {
     public void doService(String topicName, JSONObject json) {
         try {
             topicName = topicName.toLowerCase();
+            logger.warn("topicName:"+topicName);
             // get service object
             String mapperName = underlineToCamel(topicName) + "Mapper";
             String mapperClassName = "com.etiantian.dao.mappers." + toFirstUpperCase(mapperName);
