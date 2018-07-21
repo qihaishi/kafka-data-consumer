@@ -74,12 +74,12 @@ public class ServiceFacade {
      * @throws InvocationTargetException
      * @throws IllegalAccessException
      */
-    public static <T> void setParamsByRulesJson(T t, JSONObject json,boolean filterCime) throws Exception {
+    public static <T> void setParamsByRulesJson(T t, JSONObject json, boolean filterCime) throws Exception {
         if (json.has("query")) {
-            setParamsByJson(t, (JSONObject) json.get("query"),false);
+            setParamsByJson(t, (JSONObject) json.get("query"), false);
         }
         if (json.has("update")) {
-            setParamsByJson(t, (JSONObject) json.get("update"),filterCime);
+            setParamsByJson(t, (JSONObject) json.get("update"), filterCime);
         }
     }
 
@@ -101,11 +101,11 @@ public class ServiceFacade {
         return true;
     }
 
-    public static <T> void setParamsByJson(T t, JSONObject json,boolean filterCtime) throws Exception {
+    public static <T> void setParamsByJson(T t, JSONObject json, boolean filterCtime) throws Exception {
         Iterator<String> it = json.keys();
         while (it.hasNext()) {
             String key = it.next();
-            if(filterCtime && (key.equalsIgnoreCase("c_time") || key.equalsIgnoreCase("ctime"))){
+            if (filterCtime && (key.equalsIgnoreCase("c_time") || key.equalsIgnoreCase("ctime"))) {
                 continue;
             }
             Object value = json.get(key);
@@ -160,9 +160,9 @@ public class ServiceFacade {
         if (!StringUtils.isEmpty(key)) {
             String methodName;
             boolean bool = notNeedConvert(key);
-            if(bool){
+            if (bool) {
                 methodName = "set" + underlineToCamel(key);
-            }else{
+            } else {
                 methodName = "set" + toFirstUpperCase(underlineToCamel(key));
             }
             callMethod(t, methodName, value);
@@ -170,8 +170,9 @@ public class ServiceFacade {
     }
 
     /**
-     cTime
-     c_
+     * cTime
+     * c_
+     *
      * @param key
      * @return
      */
@@ -201,7 +202,8 @@ public class ServiceFacade {
     public void doService(String topicName, JSONObject json) {
         try {
             topicName = topicName.toLowerCase();
-            logger.warn("topicName:"+topicName);
+            long startTime = System.currentTimeMillis();
+            logger.warn("topicName:" + topicName + "=========startTime:" + startTime);
             // get service object
             String mapperName = underlineToCamel(topicName) + "Mapper";
             String mapperClassName = "com.etiantian.dao.mappers." + toFirstUpperCase(mapperName);
@@ -213,7 +215,7 @@ public class ServiceFacade {
             String entityClassName = "com.etiantian.entity." + toFirstUpperCase(entityName);
             Class entityClazz = Class.forName(entityClassName);
             Object entity = entityClazz.newInstance();
-            setParamsByRulesJson(entity, json,false);
+            setParamsByRulesJson(entity, json, false);
 
             // get example obj
             String exampleClassName = entityClassName + "Example";
@@ -229,6 +231,8 @@ public class ServiceFacade {
             } else {
                 callMethod(mapper, "insertSelective", entity);
             }
+            long costTime = System.currentTimeMillis() - startTime;
+            logger.warn("topicName:" + topicName + "=========costTime:" + costTime);
         } catch (Exception e) {
             logger.error("doService ERROR!!\n", e);
         }
