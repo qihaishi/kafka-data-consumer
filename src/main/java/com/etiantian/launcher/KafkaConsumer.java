@@ -27,13 +27,14 @@ public class KafkaConsumer {
     PollableChannel channel;
     public void execute() throws IOException {
         while (true) {
+            logger.warn("===KafkaConsumer execute===");
             Message<?> received = channel.receive(1000L);
             if(received != null) {
                 KafkaMessageHeaders headers = (KafkaMessageHeaders) received.getHeaders();
                 Map<String, Object> map = headers.getRawHeaders();
                 String topic= map.get("kafka_receivedTopic").toString();
                 String value= received.getPayload().toString();
-                logger.debug("value:"+value);
+                logger.warn("Kafka Msg Value:"+value);
                 try {
                     serviceFacade.doService(topic, new JSONObject(value));
                 } catch (JSONException e) {
