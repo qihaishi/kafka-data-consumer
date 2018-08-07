@@ -451,10 +451,10 @@ CREATE TABLE `version_info_del` (
 
 /*AB卷超纲检查使用表 */
 /*==============================================================*/
-/* Table: j_node_sort                                    */
+/* Table: j_node_sort_snap                                    */
 /*==============================================================*/
 
-CREATE TABLE j_node_sort
+CREATE TABLE j_node_sort_snap
 (
    ref                  BIGINT(19) NOT NULL AUTO_INCREMENT COMMENT '流水号',
    section_id           INT(11) NOT NULL COMMENT '学段',
@@ -474,33 +474,29 @@ CREATE TABLE j_node_sort
    m_user_id            BIGINT(19) COMMENT '修改人',
    ggs_time             TIMESTAMP NOT NULL DEFAULT  CURRENT_TIMESTAMP COMMENT '同步时间',
    PRIMARY KEY (ref)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;;
-
-ALTER TABLE j_node_sort COMMENT '版本树节点顺序表';
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '版本树节点顺序快照表';
 
 /*==============================================================*/
-/* Table: j_node_sort_del                                       */
+/* Table: j_node_question_snap                                       */
 /*==============================================================*/
-CREATE TABLE j_node_sort_del
-(
-   ref                  BIGINT(19) NOT NULL AUTO_INCREMENT COMMENT '流水号',
-   section_id           INT(11) NOT NULL COMMENT '学段',
-   subject_id           INT(11) NOT NULL COMMENT '学科',
-   version_id           INT(11) NOT NULL COMMENT '版本ID',
-   grade_id             INT(11) NOT NULL COMMENT '年级',
-   material_id          BIGINT(19) NOT NULL COMMENT '教材',
-   node_id              BIGINT(19) NOT NULL COMMENT '节点ID',
-   node_sort_num        INT(11) NOT NULL COMMENT '节点顺序',
-   node_level           INT(5) NOT NULL COMMENT '节点层级',
-   parent_id            BIGINT(19) NOT NULL COMMENT '节点父ID',
-   root_id              BIGINT(19) NOT NULL COMMENT '节点根ID',
-   node_path            VARCHAR(4000) NOT NULL COMMENT '节点路径',
-   c_time               DATETIME NOT NULL COMMENT '创建时间',
-   c_user_id            BIGINT(19) COMMENT '创建人',
-   m_time               DATETIME COMMENT '修改时间',
-   m_user_id            BIGINT(19) COMMENT '修改人',
-   ggs_time             TIMESTAMP NOT NULL DEFAULT  CURRENT_TIMESTAMP COMMENT '同步时间',
-   PRIMARY KEY (ref)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;;
+CREATE TABLE `j_node_question_snap` (
+  `ref` bigint(19) NOT NULL AUTO_INCREMENT COMMENT '流水号',
+  `section_id` int(11) NOT NULL COMMENT '学段',
+  `subject_id` int(11) NOT NULL COMMENT '学科',
+  `version_id` int(11) NOT NULL COMMENT '版本ID',
+  `node_id` bigint(19) NOT NULL COMMENT '节点ID',
+  `node_level` int(5) NOT NULL COMMENT '知识点层级',
+  `question_id` bigint(19) NOT NULL COMMENT '试题ID',
+  `is_direct` int(1) NOT NULL DEFAULT '0' COMMENT '1:直属',
+  `subject_type` int(5) comment '文理标记 -1=文；1=理；0=通用',
+  `c_time` datetime NOT NULL COMMENT '创建时间',
+  `c_user_id` bigint(19) DEFAULT NULL COMMENT '创建人',
+  `m_time` datetime DEFAULT NULL COMMENT '修改时间',
+  `m_user_id` bigint(19) DEFAULT NULL COMMENT '修改人',
+  `ggs_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '同步时间',
+  PRIMARY KEY (`ref`),
+  KEY `idx_ques_id` (`question_id`),
+  KEY `idx_node_id` (`node_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='节点试题关系快照表';
 
-ALTER TABLE j_node_sort_del COMMENT '版本树节点顺序删除表';
+

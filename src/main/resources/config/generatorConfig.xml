@@ -86,8 +86,8 @@
         <table tableName="j_node_question_del" domainObjectName="JNodeQuestionDel"></table>
         -->
 
-        <table tableName="j_node_sort" domainObjectName="JNodeSort"></table>
-        <table tableName="j_node_sort_del" domainObjectName="JNodeSortDel"></table>
+        <table tableName="j_node_sort_snap" domainObjectName="JNodeSortSnap"></table>
+        <table tableName="j_node_question_snap" domainObjectName="JNodeQuestionSnap"></table>
 
 
     </context>
