@@ -1,18 +1,4 @@
-﻿/*
-SQLyog Ultimate v11.42 (64 bit)
-MySQL - 5.5.56 : Database - orautf
-*********************************************************************
-*/
-
-
-/*!40101 SET NAMES utf8 */;
-
-/*!40101 SET SQL_MODE=''*/;
-
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-/*Table structure for table `dc_tp_course_info_new` */
+﻿/*Table structure for table `dc_tp_course_info_new` */
 
 CREATE TABLE `dc_tp_course_info_new` (
   `ref` bigint(19) NOT NULL,
@@ -462,11 +448,12 @@ CREATE TABLE `version_info_del` (
   KEY `idx_section_id` (`section_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 /*AB卷超纲检查使用表 */
+/*==============================================================*/
+/* Table: j_node_sort                                    */
+/*==============================================================*/
+
 CREATE TABLE j_node_sort
 (
    ref                  BIGINT(19) NOT NULL AUTO_INCREMENT COMMENT '流水号',
