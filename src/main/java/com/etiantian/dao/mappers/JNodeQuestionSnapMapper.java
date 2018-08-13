@@ -4,7 +4,9 @@ import com.etiantian.entity.JNodeQuestionSnap;
 import com.etiantian.entity.JNodeQuestionSnapExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
+@Component("jNodeQuestionSnapMapper")
 public interface JNodeQuestionSnapMapper {
     int countByExample(JNodeQuestionSnapExample example);
 

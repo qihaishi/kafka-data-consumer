@@ -4,7 +4,9 @@ import com.etiantian.entity.JNodeSortSnap;
 import com.etiantian.entity.JNodeSortSnapExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
+@Component("jNodeSortSnapMapper")
 public interface JNodeSortSnapMapper {
     int countByExample(JNodeSortSnapExample example);
 
