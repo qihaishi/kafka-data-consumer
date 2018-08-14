@@ -234,7 +234,7 @@ public class ServiceFacade {
             long costTime = System.currentTimeMillis() - startTime;
             logger.debug("topicName:" + topicName + "=========costTime:" + costTime);
         } catch (Exception e) {
-            logger.error("doService ERROR!!\n", e);
+            logger.error("doService ERROR!!\ntopicName:"+topicName+"\njson:"+json+"\n", e);
         }
     }
 }
