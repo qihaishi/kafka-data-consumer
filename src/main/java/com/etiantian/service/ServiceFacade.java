@@ -132,8 +132,21 @@ public class ServiceFacade {
                         } else if (types[index].getSimpleName().toLowerCase().equals("string")) {
                             param = param.toString().replace("&apos;", "'");
                         } else if (types[index].getSimpleName().toLowerCase().equals("date")) {
-                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                            param = sdf.parse(param.toString());
+                            if(!StringUtils.isEmpty(param)) {
+                                try {
+                                    if(param.toString().length() == 19 || param.toString().length() == 10 ){
+                                        SimpleDateFormat sdf ;
+                                        if(param.toString().length() == 19 ){
+                                            sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                                        }else{
+                                            sdf = new SimpleDateFormat("yyyy-MM-dd");
+                                        }
+                                        param = sdf.parse(param.toString());
+                                    }
+                                } catch (Exception e) {
+                                    logger.error("callMethod parse date error : methodName:"+methodName+" param:"+param+" error: "+e.getMessage(),e);
+                                }
+                            }
                         }
                         params[index] = param;
                         index++;
@@ -234,7 +247,7 @@ public class ServiceFacade {
             long costTime = System.currentTimeMillis() - startTime;
             logger.debug("topicName:" + topicName + "=========costTime:" + costTime);
         } catch (Exception e) {
-            logger.error("doService ERROR!!\n", e);
+            logger.error("doService ERROR!!\ntopicName:"+topicName+"\njson:"+json+"\n", e);
         }
     }
 }
