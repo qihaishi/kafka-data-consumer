@@ -2,7 +2,6 @@ package com.etiantian.launcher;
 
 import com.etiantian.service.ServiceFacade;
 import org.apache.log4j.Logger;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.support.converter.KafkaMessageHeaders;
@@ -37,7 +36,7 @@ public class KafkaConsumer {
                 logger.debug("Kafka Msg Value:"+value);
                 try {
                     serviceFacade.doService(topic, new JSONObject(value));
-                } catch (JSONException e) {
+                } catch (Exception e) {
                     logger.error("Message format error!! "+ received+ "\n",e);
                 }
             }
