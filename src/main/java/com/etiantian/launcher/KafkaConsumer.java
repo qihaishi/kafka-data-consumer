@@ -27,6 +27,7 @@ public class KafkaConsumer {
     public void execute() throws IOException {
         while (true) {
             logger.debug("===KafkaConsumer execute===");
+            // 减小poll间隔
             Message<?> received = channel.receive(500L);
             if(received != null) {
                 KafkaMessageHeaders headers = (KafkaMessageHeaders) received.getHeaders();
