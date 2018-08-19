@@ -51,9 +51,6 @@
     <bean id="containerProperties" class="org.springframework.kafka.listener.config.ContainerProperties">
         <constructor-arg>
             <array>
-                <!--<value>tol_newpaper_dir_association</value>
-                <value>tol_question_supplement_info</value>
-                <value>recommend_resource_weight</value>-->
                 <value>version_info</value>
                 <value>version_info_del</value>
                 <value>material_info</value>
