@@ -33,7 +33,7 @@ public class KafkaConsumer {
                 Map<String, Object> map = headers.getRawHeaders();
                 String topic= map.get("kafka_receivedTopic").toString();
                 String value= received.getPayload().toString();
-                logger.warn("Kafka Msg Value:"+value);
+                //logger.warn("Kafka Msg Value:"+value);
                 try {
                     serviceFacade.doService(topic, new JSONObject(value));
                 } catch (Exception e) {
