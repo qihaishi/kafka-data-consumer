@@ -35,11 +35,11 @@ public class KafkaMessageListener implements AcknowledgingMessageListener<String
     @Override
     public void onMessage(ConsumerRecord<String, String> stringStringConsumerRecord, Acknowledgment acknowledgment) {
         long start = System.currentTimeMillis();
-        log.warn("===KafkaConsumer execute===");
+        //log.warn("===KafkaConsumer execute===");
         if (stringStringConsumerRecord != null) {
             String message = stringStringConsumerRecord.value();
             String topic = stringStringConsumerRecord.topic();
-            log.warn("Kafka Msg Value:"+message);
+            //log.warn("Kafka Msg Value:"+message);
             if (message != null && topic != null) {
                 try {
                     serviceFacade.doService(topic, new JSONObject(message));

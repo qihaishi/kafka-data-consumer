@@ -216,7 +216,7 @@ public class ServiceFacade {
         try {
             topicName = topicName.toLowerCase();
             long startTime = System.currentTimeMillis();
-            logger.warn("topicName:" + topicName + "=========startTime:" + startTime);
+            //logger.warn("topicName:" + topicName + "=========startTime:" + startTime);
             // get service object
             String mapperName = underlineToCamel(topicName) + "Mapper";
             String mapperClassName = "com.etiantian.dao.mappers." + toFirstUpperCase(mapperName);
@@ -245,7 +245,7 @@ public class ServiceFacade {
                 callMethod(mapper, "insertSelective", entity);
             }
             long costTime = System.currentTimeMillis() - startTime;
-            logger.warn("topicName:" + topicName + "=========costTime:" + costTime);
+            //logger.warn("topicName:" + topicName + "=========costTime:" + costTime);
         } catch (Exception e) {
             logger.error("doService ERROR!!\ntopicName:"+topicName+"\njson:"+json+"\n", e);
         }
