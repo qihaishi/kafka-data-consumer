@@ -4,7 +4,7 @@
 
     <groupId>com.etiantian</groupId>
     <artifactId>kafka-chapter-readback</artifactId>
-    <version>1.4-SNAPSHOT</version>
+    <version>1.4</version>
     <packaging>jar</packaging>
 
     <parent>
@@ -28,7 +28,7 @@
         <url>http://192.168.10.7:7990/scm/spark-demo/kafka-readback</url>
         <connection>scm:git:http://192.168.10.7:7990/scm/spark-demo/kafka-readback.git</connection>
         <developerConnection>scm:git:http://192.168.10.7:7990/scm/spark-demo/kafka-readback.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>kafka-chapter-readback-1.4</tag>
     </scm>
 
     <distributionManagement>
