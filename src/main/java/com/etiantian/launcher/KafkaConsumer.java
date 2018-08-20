@@ -26,7 +26,7 @@ public class KafkaConsumer {
     PollableChannel channel;
     public void execute() throws IOException {
         while (true) {
-            logger.debug("===KafkaConsumer execute===");
+            logger.warn("===KafkaConsumer execute===");
             // 减小poll间隔
             Message<?> received = channel.receive(500L);
             if(received != null) {
@@ -34,7 +34,7 @@ public class KafkaConsumer {
                 Map<String, Object> map = headers.getRawHeaders();
                 String topic= map.get("kafka_receivedTopic").toString();
                 String value= received.getPayload().toString();
-                logger.debug("Kafka Msg Value:"+value);
+                logger.warn("Kafka Msg Value:"+value);
                 try {
                     serviceFacade.doService(topic, new JSONObject(value));
                 } catch (Exception e) {
