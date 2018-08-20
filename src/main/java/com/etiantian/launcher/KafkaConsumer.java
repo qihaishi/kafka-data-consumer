@@ -1,16 +1,7 @@
 package com.etiantian.launcher;
 
-import com.etiantian.service.ServiceFacade;
 import org.apache.log4j.Logger;
-import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.support.converter.KafkaMessageHeaders;
-import org.springframework.messaging.Message;
-import org.springframework.messaging.PollableChannel;
 import org.springframework.stereotype.Component;
-
-import java.io.IOException;
-import java.util.Map;
 
 /**
  * Created by yuchunfan on 2017/2/4.
@@ -19,7 +10,7 @@ import java.util.Map;
 public class KafkaConsumer {
     private static Logger logger = Logger.getLogger(KafkaConsumer.class);
 
-    @Autowired
+   /* @Autowired
     ServiceFacade serviceFacade;
 
     @Autowired
@@ -42,5 +33,5 @@ public class KafkaConsumer {
                 }
             }
         }
-    }
+    }*/
 }
