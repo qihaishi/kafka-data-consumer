@@ -24,6 +24,7 @@
                 <entry key="value.deserializer" value="${value.deserializer}"/>
                 <entry key="fetch.max.wait.ms" value="${fetch.max.wait.ms}"/>
                 <entry key="max.poll.records" value="${max.poll.records}"/>
+                <entry key="max.partition.fetch.bytes" value="${max.partition.fetch.bytes}"/>
             </map>
         </constructor-arg>
     </bean>
