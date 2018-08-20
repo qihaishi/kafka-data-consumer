@@ -12,7 +12,7 @@ import org.springframework.kafka.annotation.EnableKafka;
 @SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
 @EnableKafka
 @Import(value={SpringContext.class})
-@ComponentScan
+@ComponentScan(value = "com.etiantian")
 public class KafkaConsumerApplication {
 
 	public static void main(String[] args) {
